@@ -101,7 +101,7 @@ export function Step3Tamano({ state, dispatch }: Props) {
               />
             ))}
           </div>
-          <label className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-1.5">
+          <label className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-1.5">
             ¿Qué cosas son? <span className="font-normal lowercase tracking-normal">(opcional)</span>
           </label>
           <textarea
@@ -109,14 +109,14 @@ export function Step3Tamano({ state, dispatch }: Props) {
             onChange={(e) => setDetalleLibre(e.target.value)}
             rows={2}
             placeholder="Ej: 2 sillones, mesa de vidrio, 10 cajas..."
-            className="w-full rounded-[0.875rem] border border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100] px-4 py-3 text-sm text-[--ink] outline-none resize-none placeholder:text-[--slate-400] transition-all duration-200"
+            className="w-full rounded-[0.875rem] border border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100) px-4 py-3 text-sm text-(--ink) outline-none resize-none placeholder:text-(--slate-400) transition-all duration-200"
           />
         </>
       )}
 
       {isSingleItem && (
         <div>
-          <label className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-1.5">
+          <label className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-1.5">
             ¿Qué objeto es?
           </label>
           <input
@@ -124,7 +124,7 @@ export function Step3Tamano({ state, dispatch }: Props) {
             value={detalleLibre}
             onChange={(e) => setDetalleLibre(e.target.value)}
             placeholder="Ej: Heladera no frost, sillón 3 cuerpos, lavarropas..."
-            className="w-full rounded-[0.875rem] border border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100] px-4 py-3 text-sm text-[--ink] outline-none placeholder:text-[--slate-400] transition-all duration-200 mb-6"
+            className="w-full rounded-[0.875rem] border border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100) px-4 py-3 text-sm text-(--ink) outline-none placeholder:text-(--slate-400) transition-all duration-200 mb-6"
           />
           <StepCTA onClick={handleNext} disabled={!canContinue} />
         </div>

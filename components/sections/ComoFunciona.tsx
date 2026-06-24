@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { EASE, staggerParent, staggerChild } from "@/lib/motion";
@@ -10,22 +11,19 @@ import { EASE, staggerParent, staggerChild } from "@/lib/motion";
 const PASOS = [
   {
     num: "01",
-    img: "/images/como-funciona/paso1-cotiza.png",
-    alt: "Calculá tu presupuesto de flete online",
+    img: "/images/pasos/paso-1.png",
     title: "Contanos qué mudás",
     desc: "Usá el cotizador o mandanos un WhatsApp con lo que tenés que mover. Sin papeles, sin turnos.",
   },
   {
     num: "02",
-    img: "/images/como-funciona/paso2-confirma.png",
-    alt: "Confirmá el precio del flete al instante",
+    img: "/images/pasos/paso-2.png",
     title: "Te pasamos el precio",
     desc: "Recibís un estimado al instante, sin compromiso. Si te cierra, coordinamos la fecha y el horario.",
   },
   {
     num: "03",
-    img: "/images/como-funciona/paso3-mudanza.png",
-    alt: "El camión llega y realiza la mudanza",
+    img: "/images/pasos/paso-3.png",
     title: "Coordinamos y listo",
     desc: "Vamos en el día y horario que elijas. Cargamos, llevamos y entregamos. Vos, tranquilo.",
   },
@@ -35,18 +33,13 @@ export function ComoFunciona() {
   const reduce = useReducedMotion();
 
   return (
-    <section
-      className="py-32 px-4 bg-[--bg-soft]"
-      id="como-funciona"
-      aria-label="Cómo funciona"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section className="relative overflow-hidden section-pad bg-(--bg-soft)" id="como-funciona" aria-label="Cómo funciona">
+      <div className="shell">
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-20">
+        <div className="max-w-2xl mb-16 md:mb-20 flex flex-col gap-5">
           <EyebrowTag>Así de fácil</EyebrowTag>
           <motion.h2
-            className="text-h2 text-[--ink]"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="section-title text-[clamp(2.35rem,4.6vw,3.85rem)]"
             initial={reduce ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -54,74 +47,75 @@ export function ComoFunciona() {
           >
             Tu mudanza en 3 pasos
           </motion.h2>
+          <motion.p
+            className="text-(--slate-600) text-body-lg max-w-xl"
+            initial={reduce ? {} : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+          >
+            Sin vueltas ni letra chica. Tres pasos y tu mudanza queda
+            coordinada.
+          </motion.p>
         </div>
 
-        {/* Cards con ilustración */}
-        <motion.ol
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
-          {...(reduce ? {} : staggerParent)}
-        >
-          {/* Línea conectora entre cards — solo desktop */}
+        {/* Línea conectora sutil (desktop) */}
+        <div className="relative">
           <div
-            className="absolute hidden md:block top-[88px] left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-[--line]"
+            className="hidden lg:block absolute left-[16.66%] right-[16.66%] top-[120px] h-px pointer-events-none"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 14px)",
+            }}
             aria-hidden
           />
 
-          {PASOS.map(({ num, img, alt, title, desc }) => (
-            <motion.li
-              key={num}
-              {...(reduce ? {} : staggerChild)}
-              className="flex flex-col gap-0"
-            >
-              {/* Card con doble bisel */}
-              <div className="rounded-[2rem] p-1.5 bg-black/[0.03] ring-1 ring-black/5 h-full">
-                <div className="rounded-[calc(2rem-0.375rem)] bg-white overflow-hidden flex flex-col h-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_2px_8px_rgba(12,18,34,0.04)]">
-                  {/* Ilustración */}
-                  <div className="relative aspect-square bg-[--bg-soft] overflow-hidden">
+          <motion.ol
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
+            {...(reduce ? {} : staggerParent)}
+          >
+            {PASOS.map(({ num, img, title, desc }) => (
+              <motion.li key={num} {...(reduce ? {} : staggerChild)} className="h-full">
+                <SpotlightCard className="group h-full p-5 flex flex-col gap-6">
+                  {/* Imagen clay sobre crema (se funde con el render) */}
+                  <div className="relative aspect-[4/3] rounded-[1.4rem] overflow-hidden bg-(--bg-warm)">
                     <Image
                       src={img}
-                      alt={alt}
+                      alt=""
                       fill
-                      className="object-contain p-8"
+                      className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    {/* Badge número */}
-                    <div className="absolute top-4 left-4 w-9 h-9 rounded-full bg-[--brand-500] text-white text-sm font-bold grid place-items-center shadow-[0_4px_12px_rgba(46,91,224,0.35)]">
+                    <span
+                      className="absolute top-3.5 left-3.5 grid place-items-center h-9 w-9 rounded-full bg-(--ink) text-white text-[0.8rem] font-semibold tabular"
+                      style={{ boxShadow: "var(--shadow-md)" }}
+                    >
                       {num}
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Texto */}
-                  <div className="p-6 flex flex-col gap-2">
-                    <h3
-                      className="text-h3 text-[--ink]"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {title}
-                    </h3>
-                    <p className="text-[--slate-600] leading-relaxed text-[0.95rem]">{desc}</p>
+                  <div className="flex flex-col gap-2.5 px-2 pb-2">
+                    <h3 className="text-h3 text-(--ink)">{title}</h3>
+                    <p className="text-(--slate-600) leading-relaxed text-[0.96rem]">{desc}</p>
                   </div>
-                </div>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ol>
+                </SpotlightCard>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </div>
 
         {/* CTA */}
         <motion.div
-          className="flex justify-center mt-16"
+          className="flex flex-col items-center gap-3 mt-16"
           initial={reduce ? {} : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
         >
-          <Button
-            href="/cotizar"
-            size="lg"
-            icon={<ArrowUpRight weight="regular" size={16} />}
-          >
+          <Button href="/cotizar" size="lg" icon={<ArrowUpRight weight="bold" size={16} />}>
             Empezá ahora
           </Button>
+          <p className="text-sm text-(--slate-400)">Gratis y sin compromiso · Tardás menos de 1 minuto</p>
         </motion.div>
       </div>
     </section>

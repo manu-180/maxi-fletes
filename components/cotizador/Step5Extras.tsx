@@ -49,7 +49,7 @@ export function Step5Extras({ state, dispatch }: Props) {
 
       {/* Ayudantes */}
       <div className="mb-4 rounded-[1.25rem] bg-black/[0.025] ring-1 ring-black/5 p-4">
-        <p className="text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-3">
+        <p className="text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-3">
           Ayudantes adicionales
         </p>
         <div className="flex items-center gap-4">
@@ -60,27 +60,27 @@ export function Step5Extras({ state, dispatch }: Props) {
             className={cn(
               "w-10 h-10 rounded-full grid place-items-center border transition-all duration-200",
               state.ayudantes === 0
-                ? "border-black/10 text-[--slate-300] cursor-not-allowed"
-                : "border-[--brand-400] text-[--brand-500] hover:bg-[--brand-50]"
+                ? "border-black/10 text-(--slate-300) cursor-not-allowed"
+                : "border-(--brand-400) text-(--brand-500) hover:bg-(--brand-50)"
             )}
             aria-label="Quitar ayudante"
           >
             <Minus size={16} weight="regular" />
           </button>
-          <span className="text-[--ink] font-semibold text-lg w-8 text-center tabular-nums">
+          <span className="text-(--ink) font-semibold text-lg w-8 text-center tabular-nums">
             {state.ayudantes}
           </span>
           <button
             type="button"
             onClick={() => setAyudantes(state.ayudantes + 1)}
             disabled={state.ayudantes >= 6}
-            className="w-10 h-10 rounded-full grid place-items-center border border-[--brand-400] text-[--brand-500] hover:bg-[--brand-50] transition-all duration-200"
+            className="w-10 h-10 rounded-full grid place-items-center border border-(--brand-400) text-(--brand-500) hover:bg-(--brand-50) transition-all duration-200"
             aria-label="Agregar ayudante"
           >
             <Plus size={16} weight="regular" />
           </button>
           {state.ayudantes > 0 && (
-            <span className="text-xs text-[--slate-600]">
+            <span className="text-xs text-(--slate-600)">
               {state.ayudantes === 1 ? "1 persona extra" : `${state.ayudantes} personas extra`}
             </span>
           )}
@@ -95,22 +95,22 @@ export function Step5Extras({ state, dispatch }: Props) {
           className={cn(
             "w-full rounded-[1.25rem] ring-1 p-4 flex items-center justify-between mb-3 text-left transition-all duration-200",
             state.armado
-              ? "bg-[--brand-50] ring-[--brand-200]"
-              : "bg-black/[0.025] ring-black/5 hover:ring-[--brand-200]"
+              ? "bg-(--brand-50) ring-(--brand-200)"
+              : "bg-black/[0.025] ring-black/5 hover:ring-(--brand-200)"
           )}
         >
           <div>
-            <p className={cn("font-semibold text-sm", state.armado ? "text-[--brand-700]" : "text-[--ink]")}>
+            <p className={cn("font-semibold text-sm", state.armado ? "text-(--brand-700)" : "text-(--ink)")}>
               Armado/desarmado de muebles
             </p>
-            <p className="text-xs text-[--slate-600] mt-0.5">Camas, placard, mesa...</p>
+            <p className="text-xs text-(--slate-600) mt-0.5">Camas, placard, mesa...</p>
           </div>
           <span
             className={cn(
               "w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200",
               state.armado
-                ? "bg-[--brand-500] border-[--brand-500]"
-                : "bg-white border-[--slate-300]"
+                ? "bg-(--brand-500) border-(--brand-500)"
+                : "bg-white border-(--slate-300)"
             )}
           >
             {state.armado && (
@@ -130,22 +130,22 @@ export function Step5Extras({ state, dispatch }: Props) {
           className={cn(
             "w-full rounded-[1.25rem] ring-1 p-4 flex items-center justify-between mb-3 text-left transition-all duration-200",
             state.embalaje
-              ? "bg-[--brand-50] ring-[--brand-200]"
-              : "bg-black/[0.025] ring-black/5 hover:ring-[--brand-200]"
+              ? "bg-(--brand-50) ring-(--brand-200)"
+              : "bg-black/[0.025] ring-black/5 hover:ring-(--brand-200)"
           )}
         >
           <div>
-            <p className={cn("font-semibold text-sm", state.embalaje ? "text-[--brand-700]" : "text-[--ink]")}>
+            <p className={cn("font-semibold text-sm", state.embalaje ? "text-(--brand-700)" : "text-(--ink)")}>
               Embalaje profesional
             </p>
-            <p className="text-xs text-[--slate-600] mt-0.5">Cajas, film protector, papel...</p>
+            <p className="text-xs text-(--slate-600) mt-0.5">Cajas, film protector, papel...</p>
           </div>
           <span
             className={cn(
               "w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200",
               state.embalaje
-                ? "bg-[--brand-500] border-[--brand-500]"
-                : "bg-white border-[--slate-300]"
+                ? "bg-(--brand-500) border-(--brand-500)"
+                : "bg-white border-(--slate-300)"
             )}
           >
             {state.embalaje && (
@@ -159,7 +159,7 @@ export function Step5Extras({ state, dispatch }: Props) {
 
       {/* Especiales */}
       <div className="rounded-[1.25rem] bg-black/[0.025] ring-1 ring-black/5 p-4 mb-6">
-        <p className="text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-3">
+        <p className="text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-3">
           Objetos especiales <span className="font-normal lowercase tracking-normal">(opcional)</span>
         </p>
         <div className="flex flex-col gap-2">
@@ -174,13 +174,13 @@ export function Step5Extras({ state, dispatch }: Props) {
                   "flex items-center gap-2 text-sm px-3 py-2 rounded-xl text-left transition-all duration-200",
                   sel
                     ? "bg-amber-50 text-amber-800 border border-amber-200"
-                    : "bg-white border border-black/8 text-[--slate-600] hover:border-[--brand-200]"
+                    : "bg-white border border-black/8 text-(--slate-600) hover:border-(--brand-200)"
                 )}
               >
                 <span
                   className={cn(
                     "w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-all",
-                    sel ? "bg-amber-500 border-amber-500" : "border-[--slate-300]"
+                    sel ? "bg-amber-500 border-amber-500" : "border-(--slate-300)"
                   )}
                 >
                   {sel && (

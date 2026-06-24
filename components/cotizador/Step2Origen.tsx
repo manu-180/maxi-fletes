@@ -39,14 +39,14 @@ function LocalidadCombo({ label, value, onChange, placeholder, id }: LocalidadCo
 
   return (
     <div className="relative">
-      <label htmlFor={id} className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-1.5">
+      <label htmlFor={id} className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-1.5">
         {label}
       </label>
       <div className="relative">
         <MapPin
           size={16}
           weight="light"
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[--brand-500] pointer-events-none"
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--brand-500) pointer-events-none"
         />
         <input
           ref={inputRef}
@@ -61,9 +61,9 @@ function LocalidadCombo({ label, value, onChange, placeholder, id }: LocalidadCo
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           placeholder={placeholder ?? "Escribí el barrio o localidad..."}
           className={cn(
-            "w-full pl-9 pr-4 py-3 rounded-[0.875rem] text-sm text-[--ink] bg-white",
-            "border border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100]",
-            "outline-none transition-all duration-200 placeholder:text-[--slate-400]"
+            "w-full pl-9 pr-4 py-3 rounded-[0.875rem] text-sm text-(--ink) bg-white",
+            "border border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100)",
+            "outline-none transition-all duration-200 placeholder:text-(--slate-400)"
           )}
           autoComplete="off"
           inputMode="text"
@@ -78,12 +78,12 @@ function LocalidadCombo({ label, value, onChange, placeholder, id }: LocalidadCo
             <li key={l.nombre}>
               <button
                 type="button"
-                className="w-full text-left px-4 py-2.5 flex items-center justify-between hover:bg-[--brand-50] transition-colors duration-150"
+                className="w-full text-left px-4 py-2.5 flex items-center justify-between hover:bg-(--brand-50) transition-colors duration-150"
                 onMouseDown={() => handleSelect(l.nombre, l.zona)}
                 role="option"
                 aria-selected={query === l.nombre}
               >
-                <span className="text-sm text-[--ink]">{l.nombre}</span>
+                <span className="text-sm text-(--ink)">{l.nombre}</span>
                 {l.zona === 4 && (
                   <span className="text-xs text-amber-600 font-medium bg-amber-50 px-2 py-0.5 rounded-full">
                     Zona lejana

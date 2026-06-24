@@ -37,9 +37,9 @@ export function OptionCard({
       className={cn(
         "group w-full text-left rounded-[1.4rem] p-[1.5px] outline-none transition-shadow duration-300",
         selected
-          ? "bg-gradient-to-br from-[--brand-400] to-[--brand-600] shadow-lg shadow-[--brand-500]/20"
+          ? "bg-gradient-to-br from-(--brand-400) to-(--brand-600) shadow-lg shadow-(--brand-500)/20"
           : "bg-black/[0.04] ring-1 ring-black/[0.06] hover:shadow-md hover:shadow-black/5",
-        highlight && !selected && "ring-[--accent-500]/25",
+        highlight && !selected && "ring-(--accent-500)/25",
         className
       )}
       aria-pressed={selected}
@@ -50,8 +50,8 @@ export function OptionCard({
             className={cn(
               "w-11 h-11 rounded-[0.9rem] grid place-items-center shrink-0 transition-all duration-300",
               selected
-                ? "bg-gradient-to-br from-[--brand-500] to-[--brand-600] text-white shadow-md shadow-[--brand-500]/25"
-                : "bg-[--bg-soft] text-[--slate-600] group-hover:bg-[--brand-50] group-hover:text-[--brand-500]"
+                ? "bg-gradient-to-br from-(--brand-500) to-(--brand-600) text-white shadow-md shadow-(--brand-500)/25"
+                : "bg-(--bg-soft) text-(--slate-600) group-hover:bg-(--brand-50) group-hover:text-(--brand-500)"
             )}
           >
             {icon}
@@ -61,14 +61,14 @@ export function OptionCard({
           <p
             className={cn(
               "font-semibold text-[0.95rem] leading-snug transition-colors duration-200",
-              selected ? "text-[--brand-700]" : "text-[--ink]"
+              selected ? "text-(--brand-700)" : "text-(--ink)"
             )}
             style={{ fontFamily: "var(--font-display)" }}
           >
             {label}
           </p>
           {description && (
-            <p className="text-xs text-[--slate-600] mt-0.5 leading-snug">{description}</p>
+            <p className="text-xs text-(--slate-600) mt-0.5 leading-snug">{description}</p>
           )}
         </div>
 
@@ -79,13 +79,13 @@ export function OptionCard({
               initial={reduce ? false : { scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 22 }}
-              className="w-6 h-6 rounded-full bg-gradient-to-br from-[--brand-500] to-[--brand-600] grid place-items-center shadow-sm"
+              className="w-6 h-6 rounded-full bg-gradient-to-br from-(--brand-500) to-(--brand-600) grid place-items-center shadow-sm"
             >
               <Check size={13} weight="bold" className="text-white" />
             </motion.span>
           ) : (
-            <span className="w-6 h-6 rounded-full bg-[--bg-soft] grid place-items-center opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-              <ArrowRight size={12} weight="bold" className="text-[--brand-500]" />
+            <span className="w-6 h-6 rounded-full bg-(--bg-soft) grid place-items-center opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <ArrowRight size={12} weight="bold" className="text-(--brand-500)" />
             </span>
           )}
         </span>

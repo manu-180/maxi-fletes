@@ -48,8 +48,8 @@ export function FilterPills() {
             onClick={() => setFilter(value)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
               isActive
-                ? "bg-[--ink] text-white shadow-sm"
-                : "bg-white text-[--slate-600] ring-1 ring-[--line] hover:ring-[--brand-300] hover:text-[--brand-600]"
+                ? "bg-(--ink) text-white shadow-sm"
+                : "bg-white text-(--slate-600) ring-1 ring-(--line) hover:ring-(--brand-300) hover:text-(--brand-600)"
             }`}
           >
             {label}
@@ -57,14 +57,14 @@ export function FilterPills() {
         );
       })}
 
-      <div className="w-px h-5 bg-[--line] mx-1" aria-hidden />
+      <div className="w-px h-5 bg-(--line) mx-1" aria-hidden />
 
       <button
         onClick={toggleUrgente}
         className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           urgente
             ? "bg-red-500 text-white shadow-sm"
-            : "bg-white text-[--slate-600] ring-1 ring-[--line] hover:ring-red-200 hover:text-red-500"
+            : "bg-white text-(--slate-600) ring-1 ring-(--line) hover:ring-red-200 hover:text-red-500"
         }`}
       >
         🔴 Urgentes

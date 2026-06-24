@@ -60,10 +60,10 @@ export function AppBar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-[--brand-900] font-display font-semibold text-[17px] tracking-tight whitespace-nowrap"
+            className="text-(--brand-900) font-display font-semibold text-[17px] tracking-tight whitespace-nowrap"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Maxi<span className="text-[--brand-500]">Fletes</span>
+            Maxi<span className="text-(--brand-500)">Fletes</span>
           </Link>
 
           {/* Links desktop */}
@@ -74,7 +74,7 @@ export function AppBar() {
                   href={link.href}
                   className={cn(
                     "relative px-3 py-2 text-sm font-medium rounded-full",
-                    "text-[--slate-600] hover:text-[--ink]",
+                    "text-(--slate-600) hover:text-(--ink)",
                     "transition-colors duration-300",
                     "group"
                   )}
@@ -84,7 +84,7 @@ export function AppBar() {
                   {/* Underline animado */}
                   <span
                     className={cn(
-                      "absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-[--brand-500]",
+                      "absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-(--brand-500)",
                       "origin-center scale-x-0 group-hover:scale-x-100",
                       "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
                       pathname === link.href && "scale-x-100"
@@ -112,14 +112,14 @@ export function AppBar() {
           >
             <span
               className={cn(
-                "block w-5 h-[1.5px] bg-[--ink] rounded-full origin-center",
+                "block w-5 h-[1.5px] bg-(--ink) rounded-full origin-center",
                 "transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)]",
                 menuOpen && "translate-y-[6.5px] rotate-45"
               )}
             />
             <span
               className={cn(
-                "block w-5 h-[1.5px] bg-[--ink] rounded-full origin-center",
+                "block w-5 h-[1.5px] bg-(--ink) rounded-full origin-center",
                 "transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)]",
                 menuOpen && "-translate-y-[6.5px] -rotate-45"
               )}
@@ -156,7 +156,7 @@ export function AppBar() {
                   >
                     <Link
                       href={link.href}
-                      className="block py-4 text-[2rem] font-display font-semibold text-[--ink] hover:text-[--brand-500] transition-colors duration-200 border-b border-[--line]"
+                      className="block py-4 text-[2rem] font-display font-semibold text-(--ink) hover:text-(--brand-500) transition-colors duration-200 border-b border-(--line)"
                       style={{ fontFamily: "var(--font-display)" }}
                       onClick={() => setMenuOpen(false)}
                     >
@@ -187,7 +187,7 @@ export function AppBar() {
                   href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_DUENO}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`}
                   size="lg"
                   variant="secondary"
-                  className="justify-center w-full border-[--safe-500] text-[--safe-500] hover:bg-[--safe-50]"
+                  className="justify-center w-full border-(--safe-500) text-(--safe-500) hover:bg-(--safe-50)"
                   onClick={() => setMenuOpen(false)}
                 >
                   WhatsApp

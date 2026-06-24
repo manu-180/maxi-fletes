@@ -20,10 +20,10 @@ export function ReadingProgress() {
   return (
     <div
       aria-hidden
-      className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-[--line]"
+      className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-(--line)"
     >
       <div
-        className="h-full origin-left bg-gradient-to-r from-[--brand-500] to-[--accent-500]"
+        className="h-full origin-left bg-gradient-to-r from-(--brand-500) to-(--accent-500)"
         style={{
           width: `${progress}%`,
           transition: "width 80ms linear",

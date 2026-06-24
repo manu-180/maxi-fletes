@@ -1,128 +1,145 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
-import { ArrowUpRight, Truck, Armchair, Package, Warehouse } from "@phosphor-icons/react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { EASE, staggerParent, staggerChild } from "@/lib/motion";
 import { SERVICIOS } from "@/data/servicios";
 import { cn } from "@/lib/utils";
 
-const ICONS = {
-  mudanzas: Warehouse,
-  fletes: Truck,
-  "mini-fletes": Armchair,
-  embalaje: Package,
+const IMAGES: Record<string, string> = {
+  mudanzas: "/images/servicios/mudanzas.webp",
+  fletes: "/images/servicios/fletes.webp",
+  "mini-fletes": "/images/servicios/mini-fletes.webp",
+  embalaje: "/images/servicios/embalaje.webp",
 };
 
-const COLORS = {
-  mudanzas: { bg: "bg-[--brand-500]", text: "text-white" },
-  fletes: { bg: "bg-[--brand-50]", text: "text-[--brand-500]" },
-  "mini-fletes": { bg: "bg-orange-50", text: "text-orange-500" },
-  embalaje: { bg: "bg-[--safe-50]", text: "text-[--safe-500]" },
+// Bento asimétrico (lg:grid-cols-6) — sin tres columnas iguales
+const SPANS: Record<string, string> = {
+  mudanzas: "lg:col-span-4",
+  fletes: "lg:col-span-2",
+  "mini-fletes": "lg:col-span-3",
+  embalaje: "lg:col-span-3",
 };
+
+function CtaLink({ label, href }: { label: string; href: string }) {
+  return (
+    <Link
+      href={href}
+      className="group/link inline-flex items-center gap-2 text-sm font-semibold text-(--brand-600) hover:text-(--brand-500) transition-colors duration-300"
+    >
+      {label}
+      <span className="grid place-items-center h-6 w-6 rounded-full bg-(--brand-50) text-(--brand-600) transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
+        <ArrowUpRight weight="bold" size={13} />
+      </span>
+    </Link>
+  );
+}
 
 export function Servicios() {
   const reduce = useReducedMotion();
 
   return (
-    <section
-      className="py-32 px-4 bg-[--bg]"
-      id="servicios"
-      aria-label="Nuestros servicios"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section className="section-pad bg-(--bg)" id="servicios" aria-label="Nuestros servicios">
+      <div className="shell">
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
+        <div className="max-w-2xl mb-14 md:mb-18 flex flex-col gap-5">
           <EyebrowTag>Qué hacemos</EyebrowTag>
           <motion.h2
-            className="text-h2 text-[--ink]"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="section-title text-[clamp(2.35rem,4.6vw,3.85rem)]"
             initial={reduce ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
           >
-            Para mover una cosa
-            <br />o toda la casa
+            Para mover una cosa,
+            <br />o toda la <span className="ink-underline">casa</span>
           </motion.h2>
+          <motion.p
+            className="text-(--slate-600) text-body-lg max-w-xl"
+            initial={reduce ? {} : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+          >
+            Desde una heladera sola hasta una mudanza de tres ambientes con
+            embalaje y armado. Vos elegís cuánto hacemos nosotros.
+          </motion.p>
         </div>
 
-        {/* ─── Asymmetrical Bento ─── */}
+        {/* Bento */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5"
           {...(reduce ? {} : staggerParent)}
         >
-          {SERVICIOS.map((servicio) => {
-            const Icon = ICONS[servicio.id];
-            const colors = COLORS[servicio.id];
+          {SERVICIOS.map((s) => {
+            const img = IMAGES[s.id];
+            const isBig = s.highlight;
 
             return (
               <motion.div
-                key={servicio.id}
+                key={s.id}
                 {...(reduce ? {} : staggerChild)}
-                className={cn(
-                  servicio.highlight && "md:col-span-2 lg:col-span-2"
-                )}
+                className={cn("sm:col-span-2", SPANS[s.id])}
               >
-                {/* Doble bisel */}
-                <motion.div
-                  whileHover={reduce ? {} : { y: -5 }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  className="h-full rounded-[2rem] p-1.5 bg-black/[0.03] ring-1 ring-black/5 group"
-                >
+                <SpotlightCard className="group h-full overflow-hidden flex flex-col">
                   <div
                     className={cn(
-                      "h-full rounded-[calc(2rem-0.375rem)] bg-white p-8 flex flex-col justify-between gap-8",
-                      "shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_2px_8px_rgba(12,18,34,0.04)]",
-                      servicio.highlight && "min-h-[260px]"
+                      "flex flex-col h-full",
+                      isBig && "lg:flex-row"
                     )}
                   >
-                    <div className="flex flex-col gap-4">
-                      {/* Ícono */}
-                      <div
-                        className={cn(
-                          "w-12 h-12 rounded-2xl grid place-items-center shrink-0",
-                          colors.bg,
-                          colors.text
-                        )}
-                      >
-                        <Icon weight="duotone" size={24} />
-                      </div>
-                      {/* Título + desc */}
-                      <div className="flex flex-col gap-2">
-                        <h3
-                          className={cn(
-                            "text-[--ink]",
-                            servicio.highlight ? "text-h3 text-2xl" : "text-h3"
-                          )}
-                          style={{ fontFamily: "var(--font-display)" }}
-                        >
-                          {servicio.title}
-                        </h3>
-                        <p className="text-[--slate-600] leading-relaxed text-[0.95rem]">
-                          {servicio.desc}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* CTA link */}
-                    <Link
-                      href={servicio.href}
+                    {/* Imagen */}
+                    <div
                       className={cn(
-                        "inline-flex items-center gap-1.5 text-sm font-semibold",
-                        "text-[--brand-600] hover:text-[--brand-500]",
-                        "transition-colors duration-200 group/link"
+                        "relative overflow-hidden shrink-0",
+                        isBig
+                          ? "aspect-[16/10] lg:aspect-auto lg:w-[46%] lg:min-h-[320px]"
+                          : "aspect-[16/10]"
                       )}
                     >
-                      {servicio.cta}
-                      <span className="transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
-                        <ArrowUpRight weight="bold" size={14} />
-                      </span>
-                    </Link>
+                      <Image
+                        src={img}
+                        alt={`${s.title} — MaxiFletes`}
+                        fill
+                        className="object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                        sizes={isBig ? "(max-width: 1024px) 100vw, 46vw" : "(max-width: 1024px) 100vw, 33vw"}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-(--ink)/20 via-transparent to-transparent pointer-events-none" />
+                      {isBig && (
+                        <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-(--bg)/90 backdrop-blur-sm px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-(--brand-700) shadow-[var(--shadow-sm)]">
+                          Lo más pedido
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Contenido */}
+                    <div
+                      className={cn(
+                        "flex flex-col gap-3.5 p-7 flex-1",
+                        isBig && "lg:justify-center lg:p-10 lg:gap-5"
+                      )}
+                    >
+                      <h3
+                        className={cn(
+                          "text-(--ink)",
+                          isBig ? "text-[clamp(1.7rem,2.4vw,2.4rem)] font-display font-semibold tracking-[-0.02em] leading-[1.05]" : "text-h3"
+                        )}
+                      >
+                        {s.title}
+                      </h3>
+                      <p className={cn("text-(--slate-600) leading-relaxed flex-1", isBig ? "text-body-lg max-w-md" : "text-[0.95rem]")}>
+                        {s.desc}
+                      </p>
+                      <div className="pt-1">
+                        <CtaLink label={s.cta} href={s.href} />
+                      </div>
+                    </div>
                   </div>
-                </motion.div>
+                </SpotlightCard>
               </motion.div>
             );
           })}

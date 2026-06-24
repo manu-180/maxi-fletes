@@ -63,7 +63,7 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
   );
 
   return (
-    <main className="bg-[--bg]">
+    <main className="bg-(--bg)">
       {/* ── Hero ─────────────────────────────────────── */}
       <section className="min-h-[60dvh] flex flex-col justify-center pt-32 pb-20 px-4 text-center">
         <div className="max-w-3xl mx-auto">
@@ -77,7 +77,7 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
           </motion.div>
 
           <motion.h1
-            className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-display font-bold text-[--ink] leading-[1.1] mb-5"
+            className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-display font-bold text-(--ink) leading-[1.1] mb-5"
             style={{ fontFamily: "var(--font-display)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,11 +85,11 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
           >
             Fletes y Mudanzas
             <br />
-            <span className="text-[--brand-500]">en {zona.nombre}</span>
+            <span className="text-(--brand-500)">en {zona.nombre}</span>
           </motion.h1>
 
           <motion.p
-            className="text-[--slate-600] text-lg leading-relaxed mb-8 max-w-xl mx-auto"
+            className="text-(--slate-600) text-lg leading-relaxed mb-8 max-w-xl mx-auto"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.13 }}
@@ -123,7 +123,7 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
       </section>
 
       {/* ── Trust bar ────────────────────────────────── */}
-      <section className="py-12 px-4 bg-[--brand-500]">
+      <section className="py-12 px-4 bg-(--brand-500)">
         <ul className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
           {TRUST.map((item, i) => (
             <motion.li
@@ -148,12 +148,12 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
       </section>
 
       {/* ── Servicios ────────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg]">
+      <section className="py-24 px-4 bg-(--bg)">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <EyebrowTag>Qué hacemos en {zona.nombre}</EyebrowTag>
             <motion.h2
-              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-[--ink]"
+              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-(--ink)"
               style={{ fontFamily: "var(--font-display)" }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -176,21 +176,21 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
                 {/* Double-bezel card */}
                 <div className="rounded-[1.5rem] p-[1.5px] bg-black/[0.04] ring-1 ring-black/6 h-full">
                   <div className="rounded-[calc(1.5rem-1.5px)] bg-white p-6 h-full flex flex-col gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[--brand-50] grid place-items-center text-[--brand-500]">
+                    <div className="w-10 h-10 rounded-xl bg-(--brand-50) grid place-items-center text-(--brand-500)">
                       {svc.icon}
                     </div>
                     <h3
-                      className="font-semibold text-[--ink]"
+                      className="font-semibold text-(--ink)"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {svc.label}
                     </h3>
-                    <p className="text-sm text-[--slate-600] leading-relaxed">
+                    <p className="text-sm text-(--slate-600) leading-relaxed">
                       {svc.desc}
                     </p>
                     <Link
                       href="/cotizar"
-                      className="mt-auto text-sm text-[--brand-600] font-medium hover:text-[--brand-500] transition-colors duration-200 flex items-center gap-1 group"
+                      className="mt-auto text-sm text-(--brand-600) font-medium hover:text-(--brand-500) transition-colors duration-200 flex items-center gap-1 group"
                     >
                       Cotizar en {zona.nombre}
                       <ArrowUpRight
@@ -208,12 +208,12 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
       </section>
 
       {/* ── Zonas cercanas ───────────────────────────── */}
-      <section className="py-16 px-4 bg-[--bg-soft]">
+      <section className="py-16 px-4 bg-(--bg-soft)">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2.5 mb-6">
-            <MapPin size={18} weight="light" className="text-[--brand-500]" />
+            <MapPin size={18} weight="light" className="text-(--brand-500)" />
             <h2
-              className="text-lg font-display font-semibold text-[--ink]"
+              className="text-lg font-display font-semibold text-(--ink)"
               style={{ fontFamily: "var(--font-display)" }}
             >
               También cubrimos
@@ -226,8 +226,8 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
                 href={`/fletes/${z.slug}`}
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium",
-                  "bg-white ring-1 ring-black/8 text-[--slate-600]",
-                  "hover:ring-[--brand-300] hover:text-[--brand-600]",
+                  "bg-white ring-1 ring-black/8 text-(--slate-600)",
+                  "hover:ring-(--brand-300) hover:text-(--brand-600)",
                   "transition-all duration-200"
                 )}
               >
@@ -242,7 +242,7 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
       <FaqSection />
 
       {/* ── CTA final ────────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg-soft]">
+      <section className="py-24 px-4 bg-(--bg-soft)">
         <motion.div
           className="max-w-xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -252,14 +252,14 @@ export function ZonaPageContent({ zona, allZonas }: Props) {
         >
           <EyebrowTag>Pedí tu presupuesto</EyebrowTag>
           <h2
-            className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-[--ink] mb-4"
+            className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-(--ink) mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             ¿Necesitás un flete
             <br />
             en {zona.nombre}?
           </h2>
-          <p className="text-[--slate-600] mb-9 leading-relaxed">
+          <p className="text-(--slate-600) mb-9 leading-relaxed">
             Respondé 7 preguntas y en 1 minuto te damos un estimado. Sin
             compromiso, sin cargo.
           </p>

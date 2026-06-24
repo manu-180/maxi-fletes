@@ -26,7 +26,7 @@ export function SiteChrome({
   return (
     <>
       {appBar}
-      <main className="flex-1 pb-20 md:pb-0">{children}</main>
+      <main id="contenido" className="flex-1 pb-20 md:pb-0">{children}</main>
       {footer}
       {floatingActions}
     </>

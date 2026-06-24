@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "MaxiFletes",
   },
+  twitter: {
+    card: "summary_large_image",
+  },
   robots: {
     index: true,
     follow: true,
@@ -41,7 +44,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.fontshare.com" />
         <LocalBusinessSchema />
       </head>
-      <body className="min-h-full flex flex-col bg-[--bg] text-[--ink]">
+      <body className="min-h-full flex flex-col bg-(--bg-warm) text-(--ink)">
+        <a href="#contenido" className="skip-link">Saltar al contenido</a>
+        <div className="grain" aria-hidden />
         <SiteChrome
           appBar={<AppBar />}
           footer={<Footer />}

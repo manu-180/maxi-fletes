@@ -65,9 +65,9 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
   const displayLeads = leads ?? [];
 
   return (
-    <div className="min-h-[100dvh] bg-[--bg-soft]">
+    <div className="min-h-[100dvh] bg-(--bg-soft)">
       {/* Top header bar */}
-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-[--line]">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-(--line)">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
           {/* Brand */}
           <div className="flex items-center gap-2.5">
@@ -79,12 +79,12 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
             </div>
             <div>
               <span
-                className="text-[--ink] text-sm font-semibold"
+                className="text-(--ink) text-sm font-semibold"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 MaxiFletes
               </span>
-              <span className="text-[--slate-400] text-xs ml-2">/ Panel</span>
+              <span className="text-(--slate-400) text-xs ml-2">/ Panel</span>
             </div>
           </div>
 
@@ -95,11 +95,11 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex flex-col gap-8">
         {/* Page title */}
         <div>
-          <p className="text-[11px] uppercase tracking-[0.2em] font-medium text-[--brand-600] mb-1">
+          <p className="text-[11px] uppercase tracking-[0.2em] font-medium text-(--brand-600) mb-1">
             Dashboard
           </p>
           <h1
-            className="text-2xl font-semibold text-[--ink]"
+            className="text-2xl font-semibold text-(--ink)"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Leads de presupuestos
@@ -112,7 +112,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
             label="Total leads"
             value={stats.total}
             icon={<IconUsers />}
-            color="text-[--brand-500]"
+            color="text-(--brand-500)"
           />
           <StatCard
             label="Sin contactar"
@@ -125,13 +125,13 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
             label="Contactados"
             value={stats.contactado}
             icon={<IconTruck />}
-            color="text-[--accent-500]"
+            color="text-(--accent-500)"
           />
           <StatCard
             label="Ganados"
             value={stats.ganado}
             icon={<IconCheck />}
-            color="text-[--safe-500]"
+            color="text-(--safe-500)"
           />
         </div>
 
@@ -145,7 +145,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
           <EmptyState />
         ) : (
           <div className="flex flex-col gap-3">
-            <p className="text-xs text-[--slate-400]">
+            <p className="text-xs text-(--slate-400)">
               {displayLeads.length} lead{displayLeads.length !== 1 ? "s" : ""}
               {estado ? ` · ${estado}` : ""}
               {urgente === "true" ? " · urgentes" : ""}
@@ -184,12 +184,12 @@ function StatCard({
       >
         <div className={`mb-2 ${color}`}>{icon}</div>
         <p
-          className="text-2xl font-semibold text-[--ink] tabular"
+          className="text-2xl font-semibold text-(--ink) tabular"
           style={{ fontFamily: "var(--font-display)", fontVariantNumeric: "tabular-nums" }}
         >
           {value}
         </p>
-        <p className="text-[11px] text-[--slate-400] mt-0.5 font-medium uppercase tracking-wide">
+        <p className="text-[11px] text-(--slate-400) mt-0.5 font-medium uppercase tracking-wide">
           {label}
         </p>
       </div>
@@ -205,8 +205,8 @@ function EmptyState() {
         style={{ boxShadow: "inset 0 1px 1px rgba(255,255,255,0.6)" }}
       >
         <div className="text-4xl mb-4">📭</div>
-        <p className="text-[--ink] font-semibold">Sin leads</p>
-        <p className="text-sm text-[--slate-400] mt-1">
+        <p className="text-(--ink) font-semibold">Sin leads</p>
+        <p className="text-sm text-(--slate-400) mt-1">
           Cuando alguien complete el cotizador, aparecerá acá.
         </p>
       </div>

@@ -22,7 +22,7 @@ export default function BlogPage() {
   const [featured, ...rest] = posts;
 
   return (
-    <main className="min-h-[100dvh] bg-[--bg-soft]">
+    <main className="min-h-[100dvh] bg-(--bg-soft)">
       {/* ─── Hero ─── */}
       <section className="pt-36 pb-20 px-4">
         <div className="max-w-5xl mx-auto">
@@ -33,20 +33,20 @@ export default function BlogPage() {
           <Reveal delay={0.08}>
             <h1 className="text-h2 mt-5 max-w-2xl">
               Guías y consejos sobre{" "}
-              <span className="text-[--brand-500]">fletes y mudanzas</span>{" "}
+              <span className="text-(--brand-500)">fletes y mudanzas</span>{" "}
               en el GBA Oeste
             </h1>
           </Reveal>
 
           <Reveal delay={0.16}>
-            <p className="text-body-lg text-[--slate-600] mt-4 max-w-xl">
+            <p className="text-body-lg text-(--slate-600) mt-4 max-w-xl">
               Del equipo de MaxiFletes — 18 años moviendo el oeste.
             </p>
           </Reveal>
 
           {/* Divider */}
           <Reveal delay={0.22}>
-            <div className="mt-12 h-px bg-gradient-to-r from-[--brand-500]/30 via-[--line] to-transparent" />
+            <div className="mt-12 h-px bg-gradient-to-r from-(--brand-500)/30 via-(--line) to-transparent" />
           </Reveal>
         </div>
       </section>

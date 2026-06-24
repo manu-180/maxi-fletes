@@ -35,8 +35,8 @@ export function StepCTA({
         "group w-full rounded-full pl-7 pr-2.5 py-2.5 inline-flex items-center justify-between gap-3",
         "font-semibold text-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
         enabled
-          ? "bg-[--brand-500] text-white shadow-lg shadow-[--brand-500]/25 hover:bg-[--brand-600] hover:shadow-xl hover:shadow-[--brand-500]/30"
-          : "bg-black/[0.06] text-[--slate-400] cursor-not-allowed",
+          ? "bg-(--brand-500) text-white shadow-lg shadow-(--brand-500)/25 hover:bg-(--brand-600) hover:shadow-xl hover:shadow-(--brand-500)/30"
+          : "bg-black/[0.06] text-(--slate-400) cursor-not-allowed",
         className
       )}
     >

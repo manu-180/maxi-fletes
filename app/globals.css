@@ -4,6 +4,7 @@
 @import url("https://api.fontshare.com/v2/css?f[]=plus-jakarta-sans@400,500,600,700&display=swap");
 
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────────── */
 :root {
@@ -26,14 +27,17 @@
   --safe-500: #18a957;
   --safe-50: #e8f8ef;
 
-  /* Neutrales */
-  --ink: #0c1222;
-  --slate-600: #475067;
-  --slate-400: #8a93a8;
-  --line: #e7eaf2;
+  /* Neutrales — familia CÁLIDA cohesiva (sin mezclar fríos/cálidos) */
+  --ink: #14130f;
+  --ink-soft: #3a382f;
+  --slate-600: #595547;
+  --slate-400: #9b9587;
+  --line: #ece7dc;
+  --line-strong: #ddd6c7;
   --bg: #ffffff;
-  --bg-soft: #f6f8fc;
-  --bg-warm: #fbfaf7;
+  --bg-soft: #f6f2ea;   /* crema cálido — reemplaza el frío #f6f8fc */
+  --bg-warm: #faf7f0;
+  --bg-cream: #f3eee3;  /* crema más profundo para contraste sutil */
 
   /* Glow — radial mesh bandas oscuras */
   --glow-blue: rgba(46, 91, 224, 0.35);
@@ -42,64 +46,94 @@
   /* Font families */
   --font-display: "Clash Display", system-ui, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  /* Aliases para Tailwind config (font-display / font-body) */
+  --font-clash: "Clash Display", system-ui, sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Sombras tintadas premium (hue cálido + marca, nunca negro puro) */
+  --shadow-sm: 0 1px 2px rgba(40, 33, 18, 0.04), 0 2px 8px rgba(40, 33, 18, 0.05);
+  --shadow-md: 0 2px 8px rgba(40, 33, 18, 0.05), 0 18px 44px rgba(30, 40, 77, 0.08);
+  --shadow-lg: 0 12px 32px rgba(20, 28, 60, 0.10), 0 44px 90px rgba(20, 28, 60, 0.14);
+  --shadow-xl: 0 24px 70px rgba(16, 24, 55, 0.18), 0 60px 120px rgba(16, 24, 55, 0.16);
+  --shadow-amber: 0 10px 30px rgba(231, 122, 9, 0.32);
+  --shadow-brand: 0 14px 40px rgba(30, 64, 196, 0.22);
+
+  /* Spotlight (hover firma — sigue el cursor vía --mx/--my) */
+  --mx: 50%;
+  --my: 50%;
+
+  /* Container */
+  --shell-max: 75rem;       /* 1200px de contenido */
+  --shell-gutter: clamp(1.25rem, 5.5vw, 4.5rem);
 }
 
-/* ─── Reset premium ──────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* ─── Reset premium — va en @layer base para que las utilidades de espaciado de
+   Tailwind v4 puedan sobreescribirlo (lo unlayered le gana a @layer utilities) ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-warm);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv01";
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.65;
-}
+/* Texto de cuerpo legible — ancho de medida controlado donde aplique */
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
 
 /* ─── Tipografía fluida ──────────────────────────────────────────────────────── */
 .text-display-xl {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 6vw, 5rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.02;
 }
 
 .text-h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(2.35rem, 4.6vw, 3.85rem);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
 }
 
 .text-h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 600;
-  line-height: 1.25;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
 }
 
 .text-body-lg {
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.62;
+  letter-spacing: -0.003em;
 }
 
 .text-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -263,6 +297,248 @@ body {
 
 .prose-blog tr:last-child td {
   border-bottom: none;
+}
+
+/* ─── Premium: grano, máscara de texto, motivo ruta, skip-link, selección ──── */
+
+/* Film grain global — firma de textura (fixed, no interfiere con el puntero) */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Texto enmascarado con foto — firma "type meets road" (palabra "manos") */
+.text-mask-photo {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 38%;
+}
+
+/* Display XL extra para hero */
+.text-display-2xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 7.4vw, 6.5rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+}
+
+/* Hairline divisoria (se dibuja con scaleX en motion) */
+.hairline {
+  height: 1px;
+  background: var(--line);
+  transform-origin: left center;
+}
+
+/* Skip to content — accesibilidad (visible solo al enfocar con teclado) */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 50%;
+  transform: translate(-50%, -160%);
+  z-index: 200;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* Selección de texto con acento de marca */
+::selection {
+  background: var(--accent-400);
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SISTEMA PREMIUM — container, kicker, cards spotlight, ritmo
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Container: nunca edge-to-edge. Gutters que crecen en pantallas anchas ──── */
+.shell {
+  width: 100%;
+  max-width: calc(var(--shell-max) + var(--shell-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter);
+}
+.shell-narrow {
+  width: 100%;
+  max-width: calc(58rem + var(--shell-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter);
+}
+
+/* Ritmo vertical generoso y óptico (bottom > top) */
+.section-pad { padding-top: clamp(5rem, 9vw, 9rem); padding-bottom: clamp(5.5rem, 10vw, 10rem); }
+
+/* ─── Kicker — etiqueta premium (reemplaza los pills baratos) ─────────────────── */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-600);
+}
+.kicker::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-500), var(--brand-500));
+}
+.kicker-center { justify-content: center; }
+/* Kicker sobre banda oscura */
+.kicker-light { color: #b9c8ff; }
+.kicker-light::before { background: linear-gradient(90deg, var(--accent-400), #8fa8f0); }
+
+/* Título de sección con balance y presencia */
+.section-title {
+  font-family: var(--font-display);
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+/* ─── Card premium con spotlight que sigue el cursor (--mx/--my) ──────────────── */
+.card-premium {
+  position: relative;
+  border-radius: 1.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  isolation: isolate;
+  transition:
+    transform 0.55s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.55s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.55s ease;
+}
+/* Borde-luz: anillo de 1.25px que se ilumina bajo el cursor */
+.card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.25px;
+  background: radial-gradient(
+    240px circle at var(--mx) var(--my),
+    var(--brand-500),
+    var(--accent-500) 35%,
+    transparent 72%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+/* Halo interior suave sobre la superficie */
+.card-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx) var(--my),
+    rgba(46, 91, 224, 0.07),
+    transparent 58%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+.card-premium:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.card-premium:hover::before,
+.card-premium:hover::after {
+  opacity: 1;
+}
+
+/* Variante oscura del spotlight (sobre banda brand-950) */
+.card-premium-dark {
+  position: relative;
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  isolation: isolate;
+  transition:
+    transform 0.55s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.55s ease;
+}
+.card-premium-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.25px;
+  background: radial-gradient(
+    240px circle at var(--mx) var(--my),
+    var(--accent-400),
+    var(--brand-300) 40%,
+    transparent 72%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.card-premium-dark:hover {
+  transform: translateY(-7px);
+  border-color: transparent;
+}
+.card-premium-dark:hover::before {
+  opacity: 1;
+}
+
+/* Índice tipográfico grande para cards sin ícono */
+.card-index {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 3.25rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(160deg, var(--brand-500), var(--brand-900));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Realce de texto con subrayado de marca (degradé bajo la palabra clave) */
+.ink-underline {
+  background-image: linear-gradient(120deg, var(--accent-400), var(--accent-500));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.32em;
+  padding: 0 0.05em;
 }
 
 /* ─── reduced-motion ─────────────────────────────────────────────────────────── */

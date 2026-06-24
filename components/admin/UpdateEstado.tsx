@@ -13,17 +13,17 @@ const ESTADOS = [
 type Estado = (typeof ESTADOS)[number]["value"];
 
 const COLORS: Record<Estado, string> = {
-  nuevo: "bg-[--brand-50] text-[--brand-600] hover:bg-[--brand-100] ring-[--brand-100]",
+  nuevo: "bg-(--brand-50) text-(--brand-600) hover:bg-(--brand-100) ring-(--brand-100)",
   contactado: "bg-orange-50 text-orange-600 hover:bg-orange-100 ring-orange-100",
-  ganado: "bg-[--safe-50] text-[--safe-500] hover:bg-green-100 ring-green-100",
-  perdido: "bg-[--bg-soft] text-[--slate-400] hover:bg-[--line] ring-[--line]",
+  ganado: "bg-(--safe-50) text-(--safe-500) hover:bg-green-100 ring-green-100",
+  perdido: "bg-(--bg-soft) text-(--slate-400) hover:bg-(--line) ring-(--line)",
 };
 
 const ACTIVE: Record<Estado, string> = {
-  nuevo: "bg-[--brand-500] text-white ring-[--brand-600]",
+  nuevo: "bg-(--brand-500) text-white ring-(--brand-600)",
   contactado: "bg-orange-500 text-white ring-orange-600",
-  ganado: "bg-[--safe-500] text-white ring-green-600",
-  perdido: "bg-[--slate-400] text-white ring-[--slate-600]",
+  ganado: "bg-(--safe-500) text-white ring-green-600",
+  perdido: "bg-(--slate-400) text-white ring-(--slate-600)",
 };
 
 interface Props {

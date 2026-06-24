@@ -9,6 +9,7 @@ interface CountUpProps {
   suffix?: string;
   prefix?: string;
   duration?: number;
+  decimals?: number;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export function CountUp({
   suffix = "",
   prefix = "",
   duration = 2000,
+  decimals = 0,
   className,
 }: CountUpProps) {
   const [count, setCount] = useState(0);
@@ -37,16 +39,18 @@ export function CountUp({
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutCubic(progress);
-      setCount(Math.round(start + (end - start) * easedProgress));
+      setCount(start + (end - start) * easedProgress);
       if (progress < 1) requestAnimationFrame(update);
     };
 
     requestAnimationFrame(update);
   }, [isInView, end, duration]);
 
+  const display = decimals > 0 ? count.toFixed(decimals) : Math.round(count).toString();
+
   return (
     <span ref={ref} className={cn("tabular", className)}>
-      {prefix}{count}{suffix}
+      {prefix}{display}{suffix}
     </span>
   );
 }

@@ -1,8 +1,8 @@
 const CONFIG = {
   nuevo: {
     label: "Nuevo",
-    className: "bg-[--brand-50] text-[--brand-600] ring-[--brand-100]",
-    dot: "bg-[--brand-500]",
+    className: "bg-(--brand-50) text-(--brand-600) ring-(--brand-100)",
+    dot: "bg-(--brand-500)",
   },
   contactado: {
     label: "Contactado",
@@ -11,13 +11,13 @@ const CONFIG = {
   },
   ganado: {
     label: "Ganado",
-    className: "bg-[--safe-50] text-[--safe-500] ring-green-100",
-    dot: "bg-[--safe-500]",
+    className: "bg-(--safe-50) text-(--safe-500) ring-green-100",
+    dot: "bg-(--safe-500)",
   },
   perdido: {
     label: "Perdido",
-    className: "bg-[--bg-soft] text-[--slate-400] ring-[--line]",
-    dot: "bg-[--slate-400]",
+    className: "bg-(--bg-soft) text-(--slate-400) ring-(--line)",
+    dot: "bg-(--slate-400)",
   },
 } as const;
 

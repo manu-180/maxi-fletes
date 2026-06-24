@@ -157,11 +157,11 @@ export function Step7Contacto({ state, dispatch }: Props) {
       />
 
       {/* Blurred teaser */}
-      <div className="relative mb-6 rounded-[1.5rem] bg-gradient-to-br from-[--brand-50] to-[--brand-100]/50 border border-[--brand-100] p-6 overflow-hidden select-none pointer-events-none">
+      <div className="relative mb-6 rounded-[1.5rem] bg-gradient-to-br from-(--brand-50) to-(--brand-100)/50 border border-(--brand-100) p-6 overflow-hidden select-none pointer-events-none">
         <div className="blur-md">
-          <p className="text-[0.66rem] text-[--brand-600] font-semibold uppercase tracking-[0.18em] mb-1.5">Tu estimado</p>
-          <p className="text-[2.4rem] leading-none font-bold text-[--ink]" style={{ fontFamily: "var(--font-display)" }}>$XXX.000</p>
-          <p className="text-[2.4rem] leading-none font-bold text-[--ink] mt-1" style={{ fontFamily: "var(--font-display)" }}>$YYY.000</p>
+          <p className="text-[0.66rem] text-(--brand-600) font-semibold uppercase tracking-[0.18em] mb-1.5">Tu estimado</p>
+          <p className="text-[2.4rem] leading-none font-bold text-(--ink)" style={{ fontFamily: "var(--font-display)" }}>$XXX.000</p>
+          <p className="text-[2.4rem] leading-none font-bold text-(--ink) mt-1" style={{ fontFamily: "var(--font-display)" }}>$YYY.000</p>
         </div>
         {/* shimmer sweep */}
         {!reduce && (
@@ -175,8 +175,8 @@ export function Step7Contacto({ state, dispatch }: Props) {
         )}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 shadow-md shadow-black/5">
-            <Lock size={14} weight="fill" className="text-[--brand-500]" />
-            <span className="text-xs font-semibold text-[--brand-700]">Completá tus datos para verlo</span>
+            <Lock size={14} weight="fill" className="text-(--brand-500)" />
+            <span className="text-xs font-semibold text-(--brand-700)">Completá tus datos para verlo</span>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@ export function Step7Contacto({ state, dispatch }: Props) {
       <div className="flex flex-col gap-3 mb-4">
         {/* Nombre */}
         <div>
-          <label htmlFor="nombre" className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-1.5">
+          <label htmlFor="nombre" className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-1.5">
             Tu nombre
           </label>
           <input
@@ -196,8 +196,8 @@ export function Step7Contacto({ state, dispatch }: Props) {
             placeholder="Ej: Carlos, María..."
             autoComplete="given-name"
             className={cn(
-              "w-full px-4 py-3 rounded-[0.875rem] border text-sm text-[--ink] outline-none transition-all duration-200 placeholder:text-[--slate-400]",
-              nombreError ? "border-red-400 focus:ring-2 focus:ring-red-100" : "border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100]"
+              "w-full px-4 py-3 rounded-[0.875rem] border text-sm text-(--ink) outline-none transition-all duration-200 placeholder:text-(--slate-400)",
+              nombreError ? "border-red-400 focus:ring-2 focus:ring-red-100" : "border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100)"
             )}
           />
           {nombreError && <p className="text-xs text-red-500 mt-1">{nombreError}</p>}
@@ -205,7 +205,7 @@ export function Step7Contacto({ state, dispatch }: Props) {
 
         {/* WhatsApp */}
         <div>
-          <label htmlFor="whatsapp" className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-1.5">
+          <label htmlFor="whatsapp" className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-1.5">
             Tu WhatsApp
           </label>
           <input
@@ -218,12 +218,12 @@ export function Step7Contacto({ state, dispatch }: Props) {
             inputMode="tel"
             autoComplete="tel"
             className={cn(
-              "w-full px-4 py-3 rounded-[0.875rem] border text-sm text-[--ink] outline-none transition-all duration-200 placeholder:text-[--slate-400]",
-              waError ? "border-red-400 focus:ring-2 focus:ring-red-100" : "border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100]"
+              "w-full px-4 py-3 rounded-[0.875rem] border text-sm text-(--ink) outline-none transition-all duration-200 placeholder:text-(--slate-400)",
+              waError ? "border-red-400 focus:ring-2 focus:ring-red-100" : "border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100)"
             )}
           />
           {waError && <p className="text-xs text-red-500 mt-1">{waError}</p>}
-          <p className="text-xs text-[--slate-400] mt-1">Solo para que Maximiliano te contacte y confirme.</p>
+          <p className="text-xs text-(--slate-400) mt-1">Solo para que Maximiliano te contacte y confirme.</p>
         </div>
       </div>
 
@@ -236,7 +236,7 @@ export function Step7Contacto({ state, dispatch }: Props) {
         <span
           className={cn(
             "mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-all",
-            consent ? "bg-[--brand-500] border-[--brand-500]" : "bg-white border-[--slate-300]"
+            consent ? "bg-(--brand-500) border-(--brand-500)" : "bg-white border-(--slate-300)"
           )}
         >
           {consent && (
@@ -245,7 +245,7 @@ export function Step7Contacto({ state, dispatch }: Props) {
             </svg>
           )}
         </span>
-        <span className="text-xs text-[--slate-600] leading-relaxed">
+        <span className="text-xs text-(--slate-600) leading-relaxed">
           Acepto que MaxiFletes me contacte por WhatsApp para coordinar el servicio. No spam, nunca.
         </span>
       </button>
@@ -264,8 +264,8 @@ export function Step7Contacto({ state, dispatch }: Props) {
               "group w-full rounded-full pl-7 pr-2.5 py-2.5 inline-flex items-center justify-between gap-3 font-semibold text-sm",
               "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
               ready
-                ? "bg-[--brand-500] text-white hover:bg-[--brand-600] shadow-lg shadow-[--brand-500]/25 hover:shadow-xl hover:shadow-[--brand-500]/30"
-                : "bg-black/[0.06] text-[--slate-400] cursor-not-allowed"
+                ? "bg-(--brand-500) text-white hover:bg-(--brand-600) shadow-lg shadow-(--brand-500)/25 hover:shadow-xl hover:shadow-(--brand-500)/30"
+                : "bg-black/[0.06] text-(--slate-400) cursor-not-allowed"
             )}
           >
             <span className="flex-1 text-center inline-flex items-center justify-center gap-2 pl-9">
@@ -293,7 +293,7 @@ export function Step7Contacto({ state, dispatch }: Props) {
         );
       })()}
 
-      <p className="text-center text-xs text-[--slate-400] mt-3">
+      <p className="text-center text-xs text-(--slate-400) mt-3">
         🔒 Tus datos se usan solo para cotizarte. No spam.
       </p>
     </div>

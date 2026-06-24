@@ -78,21 +78,21 @@ export function Step6Cuando({ state, dispatch }: Props) {
 
       {state.cuando === "fecha" && (
         <div className="mb-4 rounded-[1.25rem] bg-black/[0.025] ring-1 ring-black/5 p-4">
-          <label className="block text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-2">
+          <label className="block text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-2">
             Fecha deseada
           </label>
           <div className="relative">
             <CalendarBlank
               size={16}
               weight="light"
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[--brand-500] pointer-events-none"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--brand-500) pointer-events-none"
             />
             <input
               type="date"
               value={state.fecha_deseada ?? ""}
               onChange={(e) => handleFecha(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
-              className="w-full pl-9 pr-4 py-3 rounded-[0.875rem] border border-black/10 focus:border-[--brand-400] focus:ring-2 focus:ring-[--brand-100] outline-none text-sm text-[--ink] transition-all duration-200"
+              className="w-full pl-9 pr-4 py-3 rounded-[0.875rem] border border-black/10 focus:border-(--brand-400) focus:ring-2 focus:ring-(--brand-100) outline-none text-sm text-(--ink) transition-all duration-200"
             />
           </div>
           {state.finde_o_finmes && state.fecha_deseada && (
@@ -105,7 +105,7 @@ export function Step6Cuando({ state, dispatch }: Props) {
 
       {/* Franja horaria */}
       <div className="rounded-[1.25rem] bg-black/[0.025] ring-1 ring-black/5 p-4 mb-6">
-        <p className="text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-3">
+        <p className="text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-3">
           Franja horaria preferida
         </p>
         <div className="grid grid-cols-3 gap-2">
@@ -117,8 +117,8 @@ export function Step6Cuando({ state, dispatch }: Props) {
               className={cn(
                 "rounded-xl py-2 text-xs font-semibold transition-all duration-200",
                 state.franja === f.value
-                  ? "bg-[--brand-500] text-white"
-                  : "bg-white border border-black/10 text-[--slate-600] hover:border-[--brand-300]"
+                  ? "bg-(--brand-500) text-white"
+                  : "bg-white border border-black/10 text-(--slate-600) hover:border-(--brand-300)"
               )}
             >
               {f.label}

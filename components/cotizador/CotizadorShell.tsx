@@ -113,10 +113,10 @@ export function CotizadorShell() {
               <button
                 type="button"
                 onClick={() => dispatch({ type: "BACK" })}
-                className="group inline-flex items-center gap-1.5 text-xs font-medium text-[--slate-600] hover:text-[--brand-600] transition-colors duration-200"
+                className="group inline-flex items-center gap-1.5 text-xs font-medium text-(--slate-600) hover:text-(--brand-600) transition-colors duration-200"
                 aria-label="Paso anterior"
               >
-                <span className="grid place-items-center w-6 h-6 rounded-full bg-[--bg-soft] group-hover:bg-[--brand-50] transition-colors duration-200">
+                <span className="grid place-items-center w-6 h-6 rounded-full bg-(--bg-soft) group-hover:bg-(--brand-50) transition-colors duration-200">
                   <ArrowLeft
                     size={13}
                     weight="bold"
@@ -149,7 +149,7 @@ export function CotizadorShell() {
 
       {/* Microcopy below */}
       {!isResult && (
-        <p className="text-center text-xs text-[--slate-400] mt-5">
+        <p className="text-center text-xs text-(--slate-400) mt-5">
           🔒 Sin compromiso · Presupuesto sin cargo
         </p>
       )}

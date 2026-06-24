@@ -24,7 +24,7 @@ interface PisoSelectorProps {
 function PisoSelector({ label, value, ascensor, onPiso, onAscensor }: PisoSelectorProps) {
   return (
     <div className="rounded-[1.25rem] bg-black/[0.025] ring-1 ring-black/5 p-4">
-      <p className="text-xs font-semibold text-[--slate-600] uppercase tracking-widest mb-3">{label}</p>
+      <p className="text-xs font-semibold text-(--slate-600) uppercase tracking-widest mb-3">{label}</p>
       <div className="grid grid-cols-4 gap-2 mb-3">
         {PISOS.map((p) => (
           <button
@@ -34,8 +34,8 @@ function PisoSelector({ label, value, ascensor, onPiso, onAscensor }: PisoSelect
             className={cn(
               "rounded-[0.75rem] py-2 text-xs font-semibold transition-all duration-200",
               value === p.value
-                ? "bg-[--brand-500] text-white shadow-sm"
-                : "bg-white border border-black/10 text-[--slate-600] hover:border-[--brand-300]"
+                ? "bg-(--brand-500) text-white shadow-sm"
+                : "bg-white border border-black/10 text-(--slate-600) hover:border-(--brand-300)"
             )}
           >
             {p.label}
@@ -49,14 +49,14 @@ function PisoSelector({ label, value, ascensor, onPiso, onAscensor }: PisoSelect
           className={cn(
             "flex items-center gap-2 text-xs font-medium rounded-full px-3 py-1.5 transition-all duration-200",
             ascensor
-              ? "bg-[--safe-50] text-[--safe-500] border border-[--safe-500]/30"
-              : "bg-white border border-black/10 text-[--slate-600] hover:border-[--brand-300]"
+              ? "bg-(--safe-50) text-(--safe-500) border border-(--safe-500)/30"
+              : "bg-white border border-black/10 text-(--slate-600) hover:border-(--brand-300)"
           )}
         >
           <span
             className={cn(
               "w-3.5 h-3.5 rounded-sm border-2 flex items-center justify-center transition-colors",
-              ascensor ? "bg-[--safe-500] border-[--safe-500]" : "border-[--slate-400]"
+              ascensor ? "bg-(--safe-500) border-(--safe-500)" : "border-(--slate-400)"
             )}
           >
             {ascensor && (

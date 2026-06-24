@@ -7,9 +7,15 @@ interface EyebrowTagProps {
   children: React.ReactNode;
   className?: string;
   animate?: boolean;
+  /** Centra el kicker (rule + label) en headers centrados */
+  center?: boolean;
 }
 
-export function EyebrowTag({ children, className, animate = true }: EyebrowTagProps) {
+/**
+ * Kicker premium — etiqueta de sección con regla degradé.
+ * Reemplaza el viejo pill delineado (se veía barato).
+ */
+export function EyebrowTag({ children, className, animate = true, center = false }: EyebrowTagProps) {
   const Comp = animate ? motion.span : "span";
   const motionProps = animate
     ? {
@@ -21,15 +27,7 @@ export function EyebrowTag({ children, className, animate = true }: EyebrowTagPr
     : {};
 
   return (
-    <Comp
-      {...motionProps}
-      className={cn(
-        "inline-flex items-center rounded-full px-3 py-1",
-        "text-eyebrow text-[--brand-600] bg-[--brand-50]",
-        "border border-[--brand-100]",
-        className
-      )}
-    >
+    <Comp {...motionProps} className={cn("kicker", center && "kicker-center", className)}>
       {children}
     </Comp>
   );

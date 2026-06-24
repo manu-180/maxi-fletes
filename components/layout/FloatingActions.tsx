@@ -54,7 +54,7 @@ export function FloatingActions() {
           >
             <div className="relative group">
               {/* Tooltip */}
-              <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-white bg-[--ink] px-3 py-1.5 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-white bg-(--ink) px-3 py-1.5 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 ¿Dudas? Escribinos por WhatsApp
               </span>
 
@@ -66,7 +66,7 @@ export function FloatingActions() {
                 onClick={() => gtagEvent("whatsapp_click", { source: "fab_desktop" })}
                 className={cn(
                   "grid place-items-center w-14 h-14 rounded-full",
-                  "bg-[--safe-500] text-white",
+                  "bg-(--safe-500) text-white",
                   "shadow-[0_4px_20px_rgba(24,169,87,0.35)]",
                   "transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
                   "hover:scale-105 hover:shadow-[0_6px_28px_rgba(24,169,87,0.45)]",
@@ -85,7 +85,7 @@ export function FloatingActions() {
         className="fixed bottom-0 inset-x-0 z-30 md:hidden"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div className="flex items-center gap-2 p-3 bg-white/95 backdrop-blur-xl border-t border-[--line] shadow-[0_-4px_24px_rgba(12,18,34,0.08)]">
+        <div className="flex items-center gap-2 p-3 bg-white/95 backdrop-blur-xl border-t border-(--line) shadow-[0_-4px_24px_rgba(12,18,34,0.08)]">
           <Button
             href="/cotizar"
             size="md"
@@ -100,7 +100,7 @@ export function FloatingActions() {
             rel="noopener noreferrer"
             aria-label="WhatsApp"
             onClick={() => gtagEvent("whatsapp_click", { source: "sticky_mobile" })}
-            className="flex items-center justify-center gap-2 px-4 h-11 rounded-full border border-[--safe-500] text-[--safe-500] font-semibold text-sm transition-colors duration-200 hover:bg-[--safe-50] shrink-0"
+            className="flex items-center justify-center gap-2 px-4 h-11 rounded-full border border-(--safe-500) text-(--safe-500) font-semibold text-sm transition-colors duration-200 hover:bg-(--safe-50) shrink-0"
           >
             <WhatsAppIcon size={18} />
             <span>WhatsApp</span>

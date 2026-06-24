@@ -93,7 +93,7 @@ const PROCESO = [
 
 export function MudanzasContent() {
   return (
-    <main className="bg-[--bg]">
+    <main className="bg-(--bg)">
       {/* ── Hero ─────────────────────────────────────── */}
       <section className="min-h-[62dvh] flex flex-col justify-center pt-32 pb-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
@@ -107,18 +107,18 @@ export function MudanzasContent() {
           </motion.div>
 
           <motion.h1
-            className="text-[2.5rem] md:text-[3.75rem] font-display font-bold text-[--ink] leading-[1.1] mb-5"
+            className="text-[2.5rem] md:text-[3.75rem] font-display font-bold text-(--ink) leading-[1.1] mb-5"
             style={{ fontFamily: "var(--font-display)" }}
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.07 }}
           >
             Mudanzas en GBA Oeste{" "}
-            <span className="text-[--brand-500]">sin vueltas</span>
+            <span className="text-(--brand-500)">sin vueltas</span>
           </motion.h1>
 
           <motion.p
-            className="text-[--slate-600] text-lg leading-relaxed mb-9 max-w-xl mx-auto"
+            className="text-(--slate-600) text-lg leading-relaxed mb-9 max-w-xl mx-auto"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.14 }}
@@ -153,7 +153,7 @@ export function MudanzasContent() {
       </section>
 
       {/* ── Qué incluye ──────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg-soft]">
+      <section className="py-24 px-4 bg-(--bg-soft)">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <motion.div
@@ -164,14 +164,14 @@ export function MudanzasContent() {
           >
             <EyebrowTag>Servicio estándar</EyebrowTag>
             <h2
-              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-[--ink] leading-tight mb-5"
+              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-(--ink) leading-tight mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Todo lo que incluye
               <br />
               una mudanza
             </h2>
-            <p className="text-[--slate-600] leading-relaxed mb-8">
+            <p className="text-(--slate-600) leading-relaxed mb-8">
               El servicio base incluye carga, traslado y descarga. Sin cargos
               ocultos. Lo que acordamos en el presupuesto es lo que pagás.
             </p>
@@ -188,9 +188,9 @@ export function MudanzasContent() {
                   <CheckCircle
                     size={18}
                     weight="fill"
-                    className="text-[--brand-500] shrink-0 mt-0.5"
+                    className="text-(--brand-500) shrink-0 mt-0.5"
                   />
-                  <span className="text-[--slate-700] text-sm leading-snug">
+                  <span className="text-(--slate-700) text-sm leading-snug">
                     {item}
                   </span>
                 </motion.li>
@@ -206,18 +206,18 @@ export function MudanzasContent() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
           >
             {/* Double-bezel hero card */}
-            <div className="rounded-[2rem] p-[2px] bg-[--brand-500] shadow-2xl shadow-[--brand-500]/30">
+            <div className="rounded-[2rem] p-[2px] bg-(--brand-500) shadow-2xl shadow-(--brand-500)/30">
               <div className="rounded-[calc(2rem-2px)] bg-white p-8">
-                <div className="w-14 h-14 rounded-2xl bg-[--brand-50] grid place-items-center mb-6">
-                  <Warehouse size={28} weight="light" className="text-[--brand-500]" />
+                <div className="w-14 h-14 rounded-2xl bg-(--brand-50) grid place-items-center mb-6">
+                  <Warehouse size={28} weight="light" className="text-(--brand-500)" />
                 </div>
                 <h3
-                  className="text-xl font-display font-bold text-[--ink] mb-2"
+                  className="text-xl font-display font-bold text-(--ink) mb-2"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   Precio cerrado siempre
                 </h3>
-                <p className="text-[--slate-600] text-sm leading-relaxed mb-6">
+                <p className="text-(--slate-600) text-sm leading-relaxed mb-6">
                   Una vez que revisamos todos los detalles, el precio es fijo.
                   No aparecen adicionales el día de la mudanza.
                 </p>
@@ -230,10 +230,10 @@ export function MudanzasContent() {
                   ].map((feat) => (
                     <div
                       key={feat.label}
-                      className="flex items-center gap-2 bg-[--bg-soft] rounded-xl px-3 py-2.5"
+                      className="flex items-center gap-2 bg-(--bg-soft) rounded-xl px-3 py-2.5"
                     >
-                      <span className="text-[--brand-500]">{feat.icon}</span>
-                      <span className="text-xs font-medium text-[--slate-700]">
+                      <span className="text-(--brand-500)">{feat.icon}</span>
+                      <span className="text-xs font-medium text-(--slate-700)">
                         {feat.label}
                       </span>
                     </div>
@@ -246,12 +246,12 @@ export function MudanzasContent() {
       </section>
 
       {/* ── Servicios extra ──────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg]">
+      <section className="py-24 px-4 bg-(--bg)">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <EyebrowTag>Servicios adicionales</EyebrowTag>
             <motion.h2
-              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-[--ink]"
+              className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-(--ink)"
               style={{ fontFamily: "var(--font-display)" }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -273,16 +273,16 @@ export function MudanzasContent() {
               >
                 <div className="rounded-[1.5rem] p-[1.5px] bg-black/[0.04] ring-1 ring-black/6 h-full">
                   <div className="rounded-[calc(1.5rem-1.5px)] bg-white p-6 flex flex-col gap-3 h-full">
-                    <div className="w-10 h-10 rounded-xl bg-[--brand-50] grid place-items-center text-[--brand-500]">
+                    <div className="w-10 h-10 rounded-xl bg-(--brand-50) grid place-items-center text-(--brand-500)">
                       {svc.icon}
                     </div>
                     <h3
-                      className="font-semibold text-[--ink]"
+                      className="font-semibold text-(--ink)"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {svc.label}
                     </h3>
-                    <p className="text-sm text-[--slate-600] leading-relaxed">
+                    <p className="text-sm text-(--slate-600) leading-relaxed">
                       {svc.desc}
                     </p>
                   </div>
@@ -291,11 +291,11 @@ export function MudanzasContent() {
             ))}
           </div>
 
-          <p className="text-center text-sm text-[--slate-500] mt-6">
+          <p className="text-center text-sm text-(--slate-500) mt-6">
             Sumás estos servicios al cotizar.{" "}
             <Link
               href="/cotizar"
-              className="text-[--brand-600] font-medium hover:text-[--brand-500] transition-colors duration-200 underline underline-offset-4"
+              className="text-(--brand-600) font-medium hover:text-(--brand-500) transition-colors duration-200 underline underline-offset-4"
             >
               Ir al cotizador →
             </Link>
@@ -304,12 +304,12 @@ export function MudanzasContent() {
       </section>
 
       {/* ── Tamaños ──────────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg-soft]">
+      <section className="py-24 px-4 bg-(--bg-soft)">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <EyebrowTag>Guía de tamaños</EyebrowTag>
             <motion.h2
-              className="mt-4 text-[2rem] font-display font-bold text-[--ink]"
+              className="mt-4 text-[2rem] font-display font-bold text-(--ink)"
               style={{ fontFamily: "var(--font-display)" }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -318,7 +318,7 @@ export function MudanzasContent() {
             >
               ¿Cuánto tarda una mudanza?
             </motion.h2>
-            <p className="mt-3 text-[--slate-600] text-sm">
+            <p className="mt-3 text-(--slate-600) text-sm">
               Tiempos estimados. El precio lo calculás en el cotizador.
             </p>
           </div>
@@ -336,7 +336,7 @@ export function MudanzasContent() {
                   className={cn(
                     "rounded-[1.5rem] p-[1.5px] h-full",
                     size.highlight
-                      ? "bg-[--brand-500] shadow-lg shadow-[--brand-500]/25"
+                      ? "bg-(--brand-500) shadow-lg shadow-(--brand-500)/25"
                       : "bg-black/[0.04] ring-1 ring-black/6"
                   )}
                 >
@@ -350,22 +350,22 @@ export function MudanzasContent() {
                       <h3
                         className={cn(
                           "font-semibold text-base",
-                          size.highlight ? "text-[--brand-600]" : "text-[--ink]"
+                          size.highlight ? "text-(--brand-600)" : "text-(--ink)"
                         )}
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {size.label}
                       </h3>
                       {size.highlight && (
-                        <span className="text-[10px] font-semibold uppercase tracking-widest bg-[--brand-500] text-white rounded-full px-2.5 py-0.5 shrink-0">
+                        <span className="text-[10px] font-semibold uppercase tracking-widest bg-(--brand-500) text-white rounded-full px-2.5 py-0.5 shrink-0">
                           Popular
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-[--slate-600] leading-relaxed">
+                    <p className="text-sm text-(--slate-600) leading-relaxed">
                       {size.desc}
                     </p>
-                    <p className="text-xs text-[--slate-500] font-medium mt-auto pt-2 border-t border-black/5">
+                    <p className="text-xs text-(--slate-500) font-medium mt-auto pt-2 border-t border-black/5">
                       ⏱ Estimado: {size.duration}
                     </p>
                   </div>
@@ -377,12 +377,12 @@ export function MudanzasContent() {
       </section>
 
       {/* ── Proceso ──────────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg]">
+      <section className="py-24 px-4 bg-(--bg)">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <EyebrowTag>Cómo funciona</EyebrowTag>
             <motion.h2
-              className="mt-4 text-[2rem] font-display font-bold text-[--ink]"
+              className="mt-4 text-[2rem] font-display font-bold text-(--ink)"
               style={{ fontFamily: "var(--font-display)" }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -404,7 +404,7 @@ export function MudanzasContent() {
                 className="flex flex-col gap-4"
               >
                 <span
-                  className="text-[3rem] font-display font-bold text-[--brand-100] leading-none"
+                  className="text-[3rem] font-display font-bold text-(--brand-100) leading-none"
                   style={{ fontFamily: "var(--font-display)" }}
                   aria-hidden
                 >
@@ -412,12 +412,12 @@ export function MudanzasContent() {
                 </span>
                 <div>
                   <h3
-                    className="font-semibold text-[--ink] mb-1.5"
+                    className="font-semibold text-(--ink) mb-1.5"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm text-[--slate-600] leading-relaxed">
+                  <p className="text-sm text-(--slate-600) leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -431,7 +431,7 @@ export function MudanzasContent() {
       <FaqSection />
 
       {/* ── CTA final ────────────────────────────────── */}
-      <section className="py-24 px-4 bg-[--bg-soft]">
+      <section className="py-24 px-4 bg-(--bg-soft)">
         <motion.div
           className="max-w-xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -441,20 +441,20 @@ export function MudanzasContent() {
         >
           <EyebrowTag>Presupuesto gratis</EyebrowTag>
           <h2
-            className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-[--ink] mb-4"
+            className="mt-4 text-[2rem] md:text-[2.5rem] font-display font-bold text-(--ink) mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             ¿Cuánto sale
             <br />
             tu mudanza?
           </h2>
-          <p className="text-[--slate-600] mb-9 leading-relaxed">
+          <p className="text-(--slate-600) mb-9 leading-relaxed">
             7 preguntas, 1 minuto, estimado al instante. Sin cargo y sin
             compromiso. El precio final lo cerramos juntos.
           </p>
 
           {/* Double-bezel CTA */}
-          <div className="rounded-[2rem] p-[2px] bg-gradient-to-br from-[--brand-400] to-[--brand-600] shadow-2xl shadow-[--brand-500]/20 mb-6">
+          <div className="rounded-[2rem] p-[2px] bg-gradient-to-br from-(--brand-400) to-(--brand-600) shadow-2xl shadow-(--brand-500)/20 mb-6">
             <div className="rounded-[calc(2rem-2px)] bg-white px-8 py-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 href="/cotizar"
@@ -473,7 +473,7 @@ export function MudanzasContent() {
             </div>
           </div>
 
-          <p className="text-xs text-[--slate-400]">
+          <p className="text-xs text-(--slate-400)">
             🔒 Tus datos se usan solo para cotizarte. Sin spam.
           </p>
         </motion.div>

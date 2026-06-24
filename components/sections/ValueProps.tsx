@@ -1,30 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
-import { Tag, Lightning, Package } from "@phosphor-icons/react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { EASE, staggerParent, staggerChild } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 
 const PILARES = [
   {
-    icon: Tag,
+    num: "01",
     title: "Sin sorpresas en el precio",
     desc: "Te decimos cuánto sale antes de mover un solo mueble. El presupuesto que ves es el que pagás.",
-    accentClass: "bg-[--brand-50] text-[--brand-500]",
+    foot: "Precio cerrado",
   },
   {
-    icon: Lightning,
+    num: "02",
     title: "Cuando lo necesitás",
-    desc: "Coordinamos rápido y nos adaptamos a tu fecha. ¿Es urgente? Escribinos — casi siempre llegamos.",
-    accentClass: "bg-[--safe-50] text-[--safe-500]",
+    desc: "Coordinamos rápido y nos adaptamos a tu fecha. ¿Es urgente? Escribinos: casi siempre llegamos.",
+    foot: "Coordinación ágil",
   },
   {
-    icon: Package,
+    num: "03",
     title: "Cuidamos cada cosa",
-    desc: "Embalamos, cargamos y trasladamos con cuidado profesional. Tus muebles llegan como salieron.",
-    accentClass: "bg-orange-50 text-orange-500",
+    desc: "Embalamos, cargamos y trasladamos con criterio profesional. Tus muebles llegan como salieron.",
+    foot: "Embalaje incluido",
   },
 ] as const;
 
@@ -32,58 +30,55 @@ export function ValueProps() {
   const reduce = useReducedMotion();
 
   return (
-    <section
-      className="py-32 px-4 bg-[--bg-soft]"
-      id="propuesta"
-      aria-label="Por qué elegirnos"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16 flex flex-col items-center gap-4">
-          <EyebrowTag>Por qué elegirnos</EyebrowTag>
-          <motion.h2
-            className="text-h2 text-[--ink]"
-            style={{ fontFamily: "var(--font-display)" }}
-            initial={reduce ? {} : { opacity: 0, y: 20 }}
+    <section className="section-pad bg-(--bg-soft)" id="propuesta" aria-label="Por qué elegirnos">
+      <div className="shell">
+        {/* Header editorial — asimétrico, alineado a la izquierda */}
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-x-12 gap-y-6 items-end mb-14 md:mb-20">
+          <div className="flex flex-col gap-5">
+            <EyebrowTag>Por qué elegirnos</EyebrowTag>
+            <motion.h2
+              className="section-title text-[clamp(2.35rem,4.6vw,3.85rem)]"
+              initial={reduce ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            >
+              Tres razones que nos
+              <br />
+              diferencian del resto
+            </motion.h2>
+          </div>
+          <motion.p
+            className="text-(--slate-600) text-body-lg max-w-md lg:pb-2"
+            initial={reduce ? {} : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
           >
-            Tres razones que nos
-            <br />
-            diferencian del resto
-          </motion.h2>
+            Mudás con un equipo que hace esto desde 2008. Sin sustos, sin
+            improvisar y sin esa sensación de estar entregando tus cosas a
+            cualquiera.
+          </motion.p>
         </div>
 
-        {/* Grid de pilares */}
+        {/* Grid de pilares — cards spotlight sin ícono */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6"
           {...(reduce ? {} : staggerParent)}
         >
-          {PILARES.map(({ icon: Icon, title, desc, accentClass }) => (
-            <motion.div
-              key={title}
-              {...(reduce ? {} : staggerChild)}
-              whileHover={reduce ? {} : { y: -6 }}
-              transition={{ duration: 0.3, ease: EASE }}
-              className="rounded-[2rem] p-1.5 bg-black/[0.03] ring-1 ring-black/5 cursor-default"
-            >
-              <div className="rounded-[calc(2rem-0.375rem)] bg-white p-8 h-full flex flex-col gap-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_2px_8px_rgba(12,18,34,0.04)]">
-                {/* Ícono */}
-                <div className={cn("w-12 h-12 rounded-2xl grid place-items-center", accentClass)}>
-                  <Icon weight="duotone" size={24} />
+          {PILARES.map(({ num, title, desc, foot }) => (
+            <motion.div key={num} {...(reduce ? {} : staggerChild)} className="h-full">
+              <SpotlightCard className="h-full p-8 lg:p-9 flex flex-col gap-7">
+                <span className="card-index">{num}</span>
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-h3 text-(--ink)">{title}</h3>
+                  <p className="text-(--slate-600) leading-relaxed">{desc}</p>
                 </div>
-                {/* Texto */}
-                <div className="flex flex-col gap-2">
-                  <h3
-                    className="text-h3 text-[--ink]"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {title}
-                  </h3>
-                  <p className="text-[--slate-600] leading-relaxed">{desc}</p>
+                <div className="mt-auto pt-6 flex items-center gap-2.5 border-t border-(--line)">
+                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-500)" aria-hidden />
+                  <span className="text-eyebrow text-(--slate-400)">{foot}</span>
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>
