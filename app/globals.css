@@ -1,26 +1,278 @@
+/* ─── Fontshare: Clash Display + Plus Jakarta Sans ─────────────────────────── */
+/* TODO producción: descargar woff2 de fontshare.com y self-hostear en /public/fonts/ */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=plus-jakarta-sans@400,500,600,700&display=swap");
+
 @import "tailwindcss";
 
+/* ─── Design Tokens ──────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Marca — Azul Ruta (confianza, profesionalismo) */
+  --brand-50: #eef3ff;
+  --brand-100: #d9e2ff;
+  --brand-300: #8fa8f0;
+  --brand-500: #2e5be0;
+  --brand-600: #1e40c4;
+  --brand-700: #16319b;
+  --brand-900: #0b1b4d;
+  --brand-950: #070f2e;
+
+  /* Acento — Ámbar Movimiento (CTA, energía) */
+  --accent-400: #ffb23e;
+  --accent-500: #f7951d;
+  --accent-600: #e07a09;
+
+  /* Seguridad / éxito */
+  --safe-500: #18a957;
+  --safe-50: #e8f8ef;
+
+  /* Neutrales */
+  --ink: #0c1222;
+  --slate-600: #475067;
+  --slate-400: #8a93a8;
+  --line: #e7eaf2;
+  --bg: #ffffff;
+  --bg-soft: #f6f8fc;
+  --bg-warm: #fbfaf7;
+
+  /* Glow — radial mesh bandas oscuras */
+  --glow-blue: rgba(46, 91, 224, 0.35);
+  --glow-amber: rgba(247, 149, 29, 0.18);
+
+  /* Font families */
+  --font-display: "Clash Display", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Reset premium ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ─── Tipografía fluida ──────────────────────────────────────────────────────── */
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.text-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.text-h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.text-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Números tabulares (precios, stats, cotizador) */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Dark band — fondo "ethereal" para cotizador y stats ───────────────────── */
+.bg-dark-band {
+  background-color: var(--brand-950);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 20% 30%, var(--glow-blue), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 70%, var(--glow-amber), transparent);
+}
+
+/* ─── Scrollbar premium ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--slate-400); }
+
+/* ─── Focus ring accesible ───────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--brand-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Blog Prose ─────────────────────────────────────────────────────────────── */
+.prose-blog h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.875rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--brand-500);
+}
+
+.prose-blog h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog p {
+  font-size: 1.125rem;
+  line-height: 1.82;
+  color: var(--slate-600);
+  margin-bottom: 1.5rem;
+}
+
+.prose-blog ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.prose-blog ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--slate-600);
+  margin-bottom: 0.6rem;
+}
+
+.prose-blog ul > li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--brand-500);
+  font-weight: 500;
+}
+
+.prose-blog ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-blog ol > li {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--slate-600);
+  margin-bottom: 0.6rem;
+}
+
+.prose-blog blockquote {
+  border-left: 3px solid var(--accent-500);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  background: var(--bg-warm);
+  border-radius: 0 1rem 1rem 0;
+  font-style: italic;
+}
+
+.prose-blog blockquote p {
+  margin-bottom: 0;
+  font-size: 1.0625rem;
+}
+
+.prose-blog strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose-blog a {
+  color: var(--brand-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s;
+}
+
+.prose-blog a:hover {
+  color: var(--brand-600);
+}
+
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+.prose-blog th {
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  border-bottom: 2px solid var(--brand-100);
+}
+
+.prose-blog td {
+  padding: 0.75rem 1.25rem;
+  color: var(--slate-600);
+  border-bottom: 1px solid var(--line);
+}
+
+.prose-blog td:first-child {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.prose-blog tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── reduced-motion ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

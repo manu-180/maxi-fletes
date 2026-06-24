@@ -1,0 +1,76 @@
+export interface Localidad {
+  nombre: string;
+  zona: 1 | 2 | 3 | 4;
+}
+
+export const LOCALIDADES: Localidad[] = [
+  // ── Zona 1 — Morón partido (core, sin adicional de distancia) ──
+  { nombre: "Morón", zona: 1 },
+  { nombre: "Castelar", zona: 1 },
+  { nombre: "Haedo", zona: 1 },
+  { nombre: "El Palomar", zona: 1 },
+  { nombre: "Palermo Chico (Morón)", zona: 1 },
+
+  // ── Zona 2 — GBA Oeste cercano ──
+  { nombre: "Ituzaingó", zona: 2 },
+  { nombre: "Paso del Rey", zona: 2 },
+  { nombre: "Hurlingham", zona: 2 },
+  { nombre: "Villa Tesei", zona: 2 },
+  { nombre: "Ramos Mejía", zona: 2 },
+  { nombre: "Ciudad Evita", zona: 2 },
+  { nombre: "San Justo", zona: 2 },
+  { nombre: "Aldo Bonzi", zona: 2 },
+  { nombre: "Villa Luzuriaga", zona: 2 },
+  { nombre: "Tapiales", zona: 2 },
+  { nombre: "Lomas del Mirador", zona: 2 },
+  { nombre: "Rafael Castillo", zona: 2 },
+  { nombre: "Ciudadela", zona: 2 },
+  { nombre: "Santos Lugares", zona: 2 },
+  { nombre: "Villa Bosch", zona: 2 },
+  { nombre: "Caseros", zona: 2 },
+  { nombre: "José Ingenieros", zona: 2 },
+  { nombre: "William Morris", zona: 2 },
+  { nombre: "Pablo Podestá", zona: 2 },
+  { nombre: "San Martín", zona: 2 },
+  { nombre: "Villa Maipú", zona: 2 },
+  { nombre: "Liniers (CABA)", zona: 2 },
+  { nombre: "Flores (CABA)", zona: 2 },
+  { nombre: "Floresta (CABA)", zona: 2 },
+  { nombre: "Villa del Parque (CABA)", zona: 2 },
+  { nombre: "Devoto (CABA)", zona: 2 },
+
+  // ── Zona 3 — GBA Oeste lejano ──
+  { nombre: "Merlo", zona: 3 },
+  { nombre: "San Antonio de Padua", zona: 3 },
+  { nombre: "Pontevedra", zona: 3 },
+  { nombre: "Libertad", zona: 3 },
+  { nombre: "Moreno", zona: 3 },
+  { nombre: "Francisco Álvarez", zona: 3 },
+  { nombre: "La Reja", zona: 3 },
+  { nombre: "Cuartel V", zona: 3 },
+  { nombre: "González Catán", zona: 3 },
+  { nombre: "Virrey del Pino", zona: 3 },
+  { nombre: "Villa Celina", zona: 3 },
+  { nombre: "La Tablada", zona: 3 },
+  { nombre: "Palermo (CABA)", zona: 3 },
+  { nombre: "Caballito (CABA)", zona: 3 },
+  { nombre: "Villa Urquiza (CABA)", zona: 3 },
+  { nombre: "Belgrano (CABA)", zona: 3 },
+  { nombre: "Núñez (CABA)", zona: 3 },
+
+  // ── Zona 4 — Fuera de zona principal ──
+  { nombre: "Pilar", zona: 4 },
+  { nombre: "Luján", zona: 4 },
+  { nombre: "La Plata", zona: 4 },
+  { nombre: "Quilmes", zona: 4 },
+  { nombre: "Lomas de Zamora", zona: 4 },
+  { nombre: "Lanús", zona: 4 },
+  { nombre: "Avellaneda", zona: 4 },
+  { nombre: "Tigre", zona: 4 },
+  { nombre: "San Isidro", zona: 4 },
+  { nombre: "Vicente López", zona: 4 },
+  { nombre: "Olivos", zona: 4 },
+  { nombre: "San Fernando", zona: 4 },
+  { nombre: "Zárate", zona: 4 },
+  { nombre: "Campana", zona: 4 },
+];
