@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
+import { gtagEvent } from "@/lib/gtag";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
 const WA_HREF = `https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`;
@@ -62,6 +63,7 @@ export function FloatingActions() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Escribir por WhatsApp"
+                onClick={() => gtagEvent("whatsapp_click", { source: "fab_desktop" })}
                 className={cn(
                   "grid place-items-center w-14 h-14 rounded-full",
                   "bg-[--safe-500] text-white",
@@ -97,6 +99,7 @@ export function FloatingActions() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
+            onClick={() => gtagEvent("whatsapp_click", { source: "sticky_mobile" })}
             className="flex items-center justify-center gap-2 px-4 h-11 rounded-full border border-[--safe-500] text-[--safe-500] font-semibold text-sm transition-colors duration-200 hover:bg-[--safe-50] shrink-0"
           >
             <WhatsAppIcon size={18} />

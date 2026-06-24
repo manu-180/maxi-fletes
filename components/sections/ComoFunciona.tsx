@@ -1,51 +1,41 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
-import { ArrowUpRight, ChatTeardropText, CurrencyCircleDollar, CheckCircle } from "@phosphor-icons/react";
-import { EASE } from "@/lib/motion";
+import { ArrowUpRight } from "@phosphor-icons/react";
+import { EASE, staggerParent, staggerChild } from "@/lib/motion";
 
 const PASOS = [
   {
     num: "01",
-    icon: ChatTeardropText,
+    img: "/images/como-funciona/paso1-cotiza.png",
+    alt: "Calculá tu presupuesto de flete online",
     title: "Contanos qué mudás",
     desc: "Usá el cotizador o mandanos un WhatsApp con lo que tenés que mover. Sin papeles, sin turnos.",
-    color: "text-[--brand-500]",
-    bg: "bg-[--brand-50]",
   },
   {
     num: "02",
-    icon: CurrencyCircleDollar,
+    img: "/images/como-funciona/paso2-confirma.png",
+    alt: "Confirmá el precio del flete al instante",
     title: "Te pasamos el precio",
     desc: "Recibís un estimado al instante, sin compromiso. Si te cierra, coordinamos la fecha y el horario.",
-    color: "text-[--safe-500]",
-    bg: "bg-[--safe-50]",
   },
   {
     num: "03",
-    icon: CheckCircle,
+    img: "/images/como-funciona/paso3-mudanza.png",
+    alt: "El camión llega y realiza la mudanza",
     title: "Coordinamos y listo",
     desc: "Vamos en el día y horario que elijas. Cargamos, llevamos y entregamos. Vos, tranquilo.",
-    color: "text-orange-500",
-    bg: "bg-orange-50",
   },
 ] as const;
 
 export function ComoFunciona() {
   const reduce = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 30%"],
-  });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section
-      ref={ref}
       className="py-32 px-4 bg-[--bg-soft]"
       id="como-funciona"
       aria-label="Cómo funciona"
@@ -66,58 +56,56 @@ export function ComoFunciona() {
           </motion.h2>
         </div>
 
-        {/* Steps con línea de progreso vertical */}
-        <div className="relative max-w-2xl mx-auto">
-          {/* Línea de fondo (gris) */}
+        {/* Cards con ilustración */}
+        <motion.ol
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
+          {...(reduce ? {} : staggerParent)}
+        >
+          {/* Línea conectora entre cards — solo desktop */}
           <div
-            className="absolute left-[27px] top-10 bottom-10 w-px bg-[--line] hidden sm:block"
+            className="absolute hidden md:block top-[88px] left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-[--line]"
             aria-hidden
           />
-          {/* Línea de progreso animada */}
-          {!reduce && (
-            <motion.div
-              className="absolute left-[27px] top-10 bottom-10 w-px bg-[--brand-500] hidden sm:block origin-top"
-              style={{ scaleY: lineHeight }}
-              aria-hidden
-            />
-          )}
 
-          <ol className="flex flex-col gap-12">
-            {PASOS.map(({ num, icon: Icon, title, desc, color, bg }, i) => (
-              <motion.li
-                key={num}
-                className="flex gap-6 sm:gap-8"
-                initial={reduce ? {} : { opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: EASE, delay: i * 0.12 }}
-              >
-                {/* Número + ícono */}
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <div className={`w-14 h-14 rounded-2xl grid place-items-center shrink-0 ${bg} ${color} relative z-10`}>
-                    <Icon weight="duotone" size={26} />
+          {PASOS.map(({ num, img, alt, title, desc }) => (
+            <motion.li
+              key={num}
+              {...(reduce ? {} : staggerChild)}
+              className="flex flex-col gap-0"
+            >
+              {/* Card con doble bisel */}
+              <div className="rounded-[2rem] p-1.5 bg-black/[0.03] ring-1 ring-black/5 h-full">
+                <div className="rounded-[calc(2rem-0.375rem)] bg-white overflow-hidden flex flex-col h-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_2px_8px_rgba(12,18,34,0.04)]">
+                  {/* Ilustración */}
+                  <div className="relative aspect-square bg-[--bg-soft] overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={alt}
+                      fill
+                      className="object-contain p-8"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    {/* Badge número */}
+                    <div className="absolute top-4 left-4 w-9 h-9 rounded-full bg-[--brand-500] text-white text-sm font-bold grid place-items-center shadow-[0_4px_12px_rgba(46,91,224,0.35)]">
+                      {num}
+                    </div>
+                  </div>
+
+                  {/* Texto */}
+                  <div className="p-6 flex flex-col gap-2">
+                    <h3
+                      className="text-h3 text-[--ink]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {title}
+                    </h3>
+                    <p className="text-[--slate-600] leading-relaxed text-[0.95rem]">{desc}</p>
                   </div>
                 </div>
-
-                {/* Contenido */}
-                <div className="flex flex-col gap-2 pt-3">
-                  <span
-                    className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[--slate-400]"
-                  >
-                    Paso {num}
-                  </span>
-                  <h3
-                    className="text-h3 text-[--ink]"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {title}
-                  </h3>
-                  <p className="text-[--slate-600] leading-relaxed">{desc}</p>
-                </div>
-              </motion.li>
-            ))}
-          </ol>
-        </div>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ol>
 
         {/* CTA */}
         <motion.div

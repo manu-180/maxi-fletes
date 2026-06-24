@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ArrowUpRight, Star, ShieldCheck, Clock } from "@phosphor-icons/react";
@@ -132,41 +133,17 @@ export function Hero() {
           >
             {/* Doble bisel alrededor de la imagen */}
             <div className="rounded-[2.5rem] p-1.5 bg-black/[0.04] ring-1 ring-black/6 shadow-[0_2px_8px_rgba(12,18,34,0.04),0_24px_64px_rgba(12,18,34,0.08)]">
-              <div className="rounded-[calc(2.5rem-0.375rem)] overflow-hidden bg-[--brand-50] aspect-[4/3] relative">
-                {/* Placeholder premium hasta tener foto real */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[--brand-100] via-[--brand-50] to-white" />
-                <div
-                  className="absolute inset-0 flex flex-col items-center justify-center gap-4"
-                  aria-hidden
-                >
-                  {/* Truck SVG lineal decorativo */}
-                  <svg
-                    viewBox="0 0 120 72"
-                    fill="none"
-                    className="w-32 opacity-30"
-                    stroke="var(--brand-500)"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="2" y="16" width="72" height="44" rx="4" />
-                    <path d="M74 30h24l12 16v14H74V30z" />
-                    <circle cx="22" cy="62" r="8" />
-                    <circle cx="58" cy="62" r="8" />
-                    <circle cx="98" cy="62" r="8" />
-                    <path d="M2 36h72" />
-                  </svg>
-                  <p className="text-[--brand-400] text-sm font-medium tracking-wide">
-                    Foto del equipo próximamente
-                  </p>
-                </div>
-
-                {/* Shimmer overlay */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent pointer-events-none"
-                  animate={{ opacity: [0.4, 0.6, 0.4] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              <div className="rounded-[calc(2.5rem-0.375rem)] overflow-hidden bg-[--brand-50] aspect-[4/5] relative">
+                <Image
+                  src="/images/hero/hero-main.png"
+                  alt="Equipo de MaxiFletes cargando muebles en camión, zona oeste Buenos Aires"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                {/* Gradient overlay sutil para mejorar legibilidad de badges */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[--brand-900]/20 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
 

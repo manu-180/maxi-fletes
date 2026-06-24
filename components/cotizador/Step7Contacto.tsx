@@ -9,6 +9,7 @@ import { calcularEstimado } from "@/lib/cotizador/calcular";
 import type { CotizadorInput } from "@/lib/cotizador/types";
 import type { CotizadorState, CotizadorAction } from "./cotizadorState";
 import { EASE } from "@/lib/motion";
+import { gtagEvent } from "@/lib/gtag";
 
 function normalizeWA(raw: string): string | null {
   const digits = raw.replace(/\D/g, "");
@@ -90,6 +91,15 @@ export function Step7Contacto({ state, dispatch }: Props) {
     dispatch({
       type: "SET_RESULTADO",
       estimado: { min: estimado.min, max: estimado.max, central: estimado.central },
+    });
+
+    // GA4 event
+    gtagEvent("cotizador_lead_creado", {
+      tipo_servicio: state.tipo ?? "desconocido",
+      origen: state.zona_origen ?? "desconocido",
+      destino: state.zona_destino ?? "desconocido",
+      estimado_central: estimado.central,
+      modo: state.modo ?? "rapido",
     });
 
     // Persist to Supabase async (fire-and-forget)
