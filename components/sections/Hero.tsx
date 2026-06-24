@@ -12,7 +12,7 @@ const SPRING = "cubic-bezier(0.32,0.72,0,1)";
 
 const WA_HREF = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000"}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`;
 
-// Última palabra ("manos.") va enmascarada con la foto — firma "type meets road"
+// Última palabra ("manos.") destacada con gradiente de marca — legible y premium
 const HEADLINE: { word: string; mask?: boolean }[] = [
   { word: "Tus" },
   { word: "cosas," },
@@ -126,20 +126,12 @@ export function Hero() {
             Fletes y mudanzas · Morón y zona oeste
           </motion.p>
 
-          {/* Headline con word reveal + "manos" enmascarada con la foto */}
+          {/* Headline con word reveal + "manos" destacada con gradiente de marca */}
           <h1 className="text-display-2xl text-(--ink)">
             {HEADLINE.map((item, i) => (
               <span key={i} className="inline-block overflow-hidden align-bottom">
                 <motion.span
-                  className={item.mask ? "inline-block text-mask-photo" : "inline-block"}
-                  style={
-                    item.mask
-                      ? {
-                          backgroundImage: "url('/images/hero/hero-main.webp')",
-                          backgroundPosition: "50% 62%",
-                        }
-                      : undefined
-                  }
+                  className={item.mask ? "inline-block word-accent" : "inline-block"}
                   initial={reduce ? {} : { y: "1.05em", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.15 + i * 0.08, duration: 0.7, ease: EASE }}

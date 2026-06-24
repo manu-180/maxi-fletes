@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
-import { Plus, Minus } from "@phosphor-icons/react";
+import { CaretDown } from "@phosphor-icons/react";
 import { EASE } from "@/lib/motion";
 import { FAQ_ITEMS } from "@/data/faq";
 import { cn } from "@/lib/utils";
@@ -58,13 +58,20 @@ function FaqItem({
             </span>
             <span
               className={cn(
-                "w-8 h-8 rounded-full grid place-items-center shrink-0 transition-all duration-300",
+                "w-8 h-8 rounded-full grid place-items-center shrink-0 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
                 isOpen
-                  ? "bg-(--brand-500) text-white rotate-0"
+                  ? "bg-(--brand-500) text-white"
                   : "bg-(--bg-soft) text-(--slate-600) group-hover:bg-(--brand-50) group-hover:text-(--brand-500)"
               )}
             >
-              {isOpen ? <Minus weight="bold" size={14} /> : <Plus weight="bold" size={14} />}
+              <CaretDown
+                weight="bold"
+                size={14}
+                className={cn(
+                  "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                  isOpen && "rotate-180"
+                )}
+              />
             </span>
           </button>
 

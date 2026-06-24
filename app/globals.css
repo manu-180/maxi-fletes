@@ -93,6 +93,25 @@
     text-rendering: optimizeLegibility;
     font-feature-settings: "ss01", "cv01";
   }
+
+  /* Cursor "manito" en TODO lo accionable — Tailwind v4 ya no lo pone solo.
+     Cubre <button>, role=button, links con href, labels, summary, selects. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  label[for],
+  summary,
+  select {
+    cursor: pointer;
+  }
+  :disabled,
+  [aria-disabled="true"],
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
 }
 
 /* Texto de cuerpo legible — ancho de medida controlado donde aplique */
@@ -321,6 +340,23 @@ h1, h2, h3 { text-wrap: balance; }
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 38%;
+}
+
+/* Palabra destacada — relleno con gradiente de marca (azul ruta profundo).
+   Reemplaza el relleno-foto y la franja ámbar: legible, sobrio y premium.
+   "manos." (hero) y "casa" (servicios) comparten este lenguaje. */
+.word-accent {
+  background-image: linear-gradient(
+    100deg,
+    var(--brand-600) 0%,
+    var(--brand-500) 46%,
+    var(--brand-700) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 /* Display XL extra para hero */

@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { EyebrowTag } from "@/components/ui/EyebrowTag";
-import { Plus, Minus, ArrowUpRight, ChatCircle } from "@phosphor-icons/react";
+import { CaretDown, ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react";
 import { EASE } from "@/lib/motion";
 import { FAQ_EXTENDED } from "@/data/faq";
 import { cn } from "@/lib/utils";
@@ -71,13 +71,20 @@ function FaqItem({
             </span>
             <span
               className={cn(
-                "w-8 h-8 rounded-full grid place-items-center shrink-0 transition-all duration-300",
+                "w-8 h-8 rounded-full grid place-items-center shrink-0 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
                 isOpen
                   ? "bg-(--brand-500) text-white"
                   : "bg-(--bg-soft) text-(--slate-600) group-hover:bg-(--brand-50) group-hover:text-(--brand-500)"
               )}
             >
-              {isOpen ? <Minus weight="bold" size={14} /> : <Plus weight="bold" size={14} />}
+              <CaretDown
+                weight="bold"
+                size={14}
+                className={cn(
+                  "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                  isOpen && "rotate-180"
+                )}
+              />
             </span>
           </button>
 
@@ -170,8 +177,8 @@ export function FaqFullPage() {
         {/* Double-bezel CTA */}
         <div className="rounded-[2rem] p-[2px] bg-gradient-to-br from-(--brand-100) to-(--brand-200) shadow-xl shadow-(--brand-500)/10">
           <div className="rounded-[calc(2rem-2px)] bg-white px-8 py-10 text-center">
-            <div className="w-12 h-12 rounded-full bg-(--brand-50) grid place-items-center mx-auto mb-5">
-              <ChatCircle size={22} weight="light" className="text-(--brand-500)" />
+            <div className="w-12 h-12 rounded-full bg-(--safe-50) grid place-items-center mx-auto mb-5">
+              <WhatsappLogo size={24} weight="fill" className="text-(--safe-500)" />
             </div>
             <h2
               className="text-xl font-display font-semibold text-(--ink) mb-2"

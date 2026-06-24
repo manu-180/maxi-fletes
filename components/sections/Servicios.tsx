@@ -56,7 +56,7 @@ export function Servicios() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
           >
             Para mover una cosa,
-            <br />o toda la <span className="ink-underline">casa</span>
+            <br />o toda la <span className="word-accent">casa</span>
           </motion.h2>
           <motion.p
             className="text-(--slate-600) text-body-lg max-w-xl"
