@@ -7,7 +7,7 @@ import { EASE, EASE_OUT } from "@/lib/motion";
 import { PriceCountUp } from "./PriceCountUp";
 import type { CotizadorState, CotizadorAction } from "./cotizadorState";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 function formatPrice(n: number) {
   return n.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });

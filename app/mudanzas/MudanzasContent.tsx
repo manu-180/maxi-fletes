@@ -18,7 +18,7 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 const INCLUYE = [
   "Carga y descarga con equipo propio",

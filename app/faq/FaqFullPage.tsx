@@ -10,7 +10,7 @@ import { EASE } from "@/lib/motion";
 import { FAQ_EXTENDED } from "@/data/faq";
 import { cn } from "@/lib/utils";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",

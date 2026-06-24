@@ -10,7 +10,7 @@ import { EASE, EASE_OUT } from "@/lib/motion";
 
 const SPRING = "cubic-bezier(0.32,0.72,0,1)";
 
-const WA_HREF = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000"}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`;
+const WA_HREF = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110"}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`;
 
 // Última palabra ("manos.") destacada con gradiente de marca — legible y premium
 const HEADLINE: { word: string; mask?: boolean }[] = [

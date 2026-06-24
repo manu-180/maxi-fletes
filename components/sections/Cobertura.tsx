@@ -9,7 +9,7 @@ import { EASE, staggerParent } from "@/lib/motion";
 import { ZONAS } from "@/data/zonas";
 import { cn } from "@/lib/utils";
 
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 export function Cobertura() {
   const reduce = useReducedMotion();

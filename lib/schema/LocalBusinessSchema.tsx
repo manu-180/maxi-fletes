@@ -1,4 +1,4 @@
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 const schema = {
   "@context": "https://schema.org",

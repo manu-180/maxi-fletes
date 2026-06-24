@@ -7,7 +7,7 @@ import { ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { gtagEvent } from "@/lib/gtag";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 const WA_HREF = `https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20consultar%20por%20un%20flete`;
 
 const SPRING = [0.32, 0.72, 0, 1] as const;

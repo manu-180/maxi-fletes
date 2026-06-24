@@ -19,7 +19,7 @@ const ZONAS = [
   { label: "Hurlingham", href: "/fletes/hurlingham" },
 ];
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 // Formatea 549 11 XXXXXXXX → +54 11 XXXX-XXXX (GBA / CABA, área 11)
 function formatWhatsApp(num: string): string {

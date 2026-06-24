@@ -48,7 +48,7 @@ const TRUST = [
   "Equipo propio y trato cuidadoso",
 ];
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491100000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_DUENO ?? "5491126948110";
 
 interface Props {
   zona: Zona;
